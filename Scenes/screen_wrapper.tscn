@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://drt04bpgtjvth"]
+
+[ext_resource type="Script" uid="uid://bux0wmtj5ohwl" path="res://Capstone-Project-Amogh-Mukherjee/Scripts/screen_wrapper.gd" id="1_k0fy0"]
+
+[node name="ScreenWrapper" type="Node" unique_id=773672884]
+script = ExtResource("1_k0fy0")

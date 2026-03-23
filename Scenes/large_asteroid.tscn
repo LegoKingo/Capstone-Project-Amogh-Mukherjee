@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bwhyqo3rjfukq"]
+
+[ext_resource type="Texture2D" uid="uid://cvg3otdcmvox8" path="res://Capstone-Project-Amogh-Mukherjee/Assets/Large Asteroid-white.png" id="1_55qto"]
+[ext_resource type="Script" uid="uid://82si56fk2tcb" path="res://Capstone-Project-Amogh-Mukherjee/Scripts/Asteroid_Movement.gd" id="1_i5vvd"]
+[ext_resource type="PackedScene" uid="uid://drt04bpgtjvth" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/screen_wrapper.tscn" id="2_i5vvd"]
+[ext_resource type="PackedScene" uid="uid://ct85to3m68ptt" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/player_explosion_particles.tscn" id="4_c6jfg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c6jfg"]
+radius = 32.165615
+height = 91.19943
+
+[node name="LargeAsteroid" type="Area2D" unique_id=1270846523]
+collision_layer = 4
+collision_mask = 31
+script = ExtResource("1_i5vvd")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1523088789]
+texture = ExtResource("1_55qto")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1759690337]
+position = Vector2(-5.9604623e-08, 1.7881393e-07)
+rotation = 2.2497294
+shape = SubResource("CapsuleShape2D_c6jfg")
+
+[node name="ScreenWrapper" parent="." unique_id=773672884 instance=ExtResource("2_i5vvd")]
+
+[node name="PlayerExplosionParticles" parent="." unique_id=1779740493 instance=ExtResource("4_c6jfg")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dyanxpmarngvf"]
+
+[ext_resource type="Script" uid="uid://obv2vkpcrmeq" path="res://Capstone-Project-Amogh-Mukherjee/Scripts/asteroid_spawner.gd" id="1_lfvqk"]
+
+[node name="AsteroidSpawner" type="Node" unique_id=2120366464]
+script = ExtResource("1_lfvqk")

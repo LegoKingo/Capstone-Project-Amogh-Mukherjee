@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://co00yhxa70qmn"]
+
+[ext_resource type="Script" uid="uid://5figfg6g4ip0" path="res://Capstone-Project-Amogh-Mukherjee/Scripts/player.gd" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://c4qa64wf0edr5" path="res://Capstone-Project-Amogh-Mukherjee/Assets/Spritesheet.png" id="2_roj76"]
+[ext_resource type="PackedScene" uid="uid://drt04bpgtjvth" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/screen_wrapper.tscn" id="3_6t5aa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcf3u"]
+atlas = ExtResource("2_roj76")
+region = Rect2(144, 16, 96, 96)
+
+[node name="Player" type="CharacterBody2D" unique_id=157252003]
+rotation = 3.1415927
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_cvnsp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=669605445]
+rotation = -0.7853982
+texture = SubResource("AtlasTexture_jcf3u")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=504585785]
+polygon = PackedVector2Array(0, -68, 23, -46, 46, 22, 34, 34, 1, 23, -34, 34, -46, 22, -23, -45)
+
+[node name="ScreenWrapper" parent="." unique_id=773672884 instance=ExtResource("3_6t5aa")]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=755140436]
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D" unique_id=1581600901]
+polygon = PackedVector2Array(0, -68, 23, -46, 46, 22, 34, 34, 1, 23, -34, 34, -46, 22, -23, -45)

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://co00yhxa70qmn" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/player.tscn" id="1_tumq0"]
 [ext_resource type="PackedScene" uid="uid://dyanxpmarngvf" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/asteroid_spawner.tscn" id="2_k5f4k"]
-[ext_resource type="PackedScene" uid="uid://bwhyqo3rjfukq" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/large_asteroid.tscn" id="3_6phgx"]
+[ext_resource type="PackedScene" uid="uid://cuepcatypikpl" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/ufo_spawner.tscn" id="3_riv6x"]
 
 [node name="Level" type="Node2D" unique_id=1496186178]
 
@@ -13,4 +13,5 @@ position = Vector2(963, 541)
 position = Vector2(641, 534)
 
 [node name="AsteroidSpawner" parent="." unique_id=2120366464 instance=ExtResource("2_k5f4k")]
-large_asteroid_scene = ExtResource("3_6phgx")
+
+[node name="UFOSpawner" parent="." unique_id=1314058867 instance=ExtResource("3_riv6x")]

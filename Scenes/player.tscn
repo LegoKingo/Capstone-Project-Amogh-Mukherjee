@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://5figfg6g4ip0" path="res://Capstone-Project-Amogh-Mukherjee/Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://c4qa64wf0edr5" path="res://Capstone-Project-Amogh-Mukherjee/Assets/Spritesheet.png" id="2_roj76"]
 [ext_resource type="PackedScene" uid="uid://drt04bpgtjvth" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/screen_wrapper.tscn" id="3_6t5aa"]
+[ext_resource type="Script" uid="uid://cydlg1w3l4c4y" path="res://Capstone-Project-Amogh-Mukherjee/Scripts/player_shooting.gd" id="4_jcf3u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jcf3u"]
 atlas = ExtResource("2_roj76")
@@ -11,6 +12,7 @@ region = Rect2(144, 16, 96, 96)
 [node name="Player" type="CharacterBody2D" unique_id=157252003]
 rotation = 3.1415927
 scale = Vector2(0.5, 0.5)
+collision_mask = 31
 script = ExtResource("1_cvnsp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=669605445]
@@ -26,3 +28,9 @@ polygon = PackedVector2Array(0, -68, 23, -46, 46, 22, 34, 34, 1, 23, -34, 34, -4
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D" unique_id=1581600901]
 polygon = PackedVector2Array(0, -68, 23, -46, 46, 22, 34, 34, 1, 23, -34, 34, -46, 22, -23, -45)
+
+[node name="ShootingPoint" type="Node2D" parent="." unique_id=1563417164]
+position = Vector2(-5.9447484e-06, -68)
+script = ExtResource("4_jcf3u")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

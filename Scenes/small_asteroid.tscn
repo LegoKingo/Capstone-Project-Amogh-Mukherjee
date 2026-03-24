@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://crlqdpxds2bbo"]
 
 [ext_resource type="Script" uid="uid://82si56fk2tcb" path="res://Capstone-Project-Amogh-Mukherjee/Scripts/Asteroid_Movement.gd" id="1_4c7lp"]
-[ext_resource type="Texture2D" path="res://Assets/Tiny Asteroid-white.png" id="2_4c7lp"]
+[ext_resource type="Texture2D" uid="uid://ch438k2rlxo06" path="res://Capstone-Project-Amogh-Mukherjee/Assets/Tiny Asteroid-white.png" id="2_4c7lp"]
 [ext_resource type="PackedScene" uid="uid://drt04bpgtjvth" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/screen_wrapper.tscn" id="3_1der0"]
 [ext_resource type="PackedScene" uid="uid://ct85to3m68ptt" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/player_explosion_particles.tscn" id="4_evdeg"]
 
@@ -9,13 +9,14 @@
 radius = 14.539743
 height = 29.079487
 
-[node name="SmallAsteroid" type="Area2D" unique_id=1270846523]
+[node name="SmallAsteroid" type="Area2D" unique_id=1270846523 groups=["Asteroids"]]
 collision_layer = 4
 collision_mask = 31
 script = ExtResource("1_4c7lp")
-speed = 300
+speed = 200
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1523088789]
+scale = Vector2(3, 3)
 texture = ExtResource("2_4c7lp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1759690337]
@@ -27,4 +28,5 @@ shape = SubResource("CapsuleShape2D_c6jfg")
 
 [node name="PlayerExplosionParticles" parent="." unique_id=1779740493 instance=ExtResource("4_evdeg")]
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

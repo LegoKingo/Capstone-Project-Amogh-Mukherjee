@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://b51x7ny724d41"]
+
+[ext_resource type="Script" uid="uid://bqhmywe3ltcui" path="res://Capstone-Project-Amogh-Mukherjee/Scripts/ufo.gd" id="1_6tia2"]
+[ext_resource type="Texture2D" uid="uid://ctih8mauv83d" path="res://Capstone-Project-Amogh-Mukherjee/Assets/UFO.png" id="1_v2cu5"]
+[ext_resource type="PackedScene" uid="uid://bmanoe6bbshwh" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/bullet.tscn" id="2_6t8i0"]
+[ext_resource type="PackedScene" uid="uid://ct85to3m68ptt" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/player_explosion_particles.tscn" id="3_6t8i0"]
+
+[node name="UFO" type="Area2D" unique_id=516216222]
+rotation = 3.1415927
+script = ExtResource("1_6tia2")
+ufo_bullet_scene = ExtResource("2_6t8i0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1820958567]
+texture = ExtResource("1_v2cu5")
+
+[node name="PlayerExplosionParticles" parent="." unique_id=1779740493 instance=ExtResource("3_6t8i0")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1249075228]
+polygon = PackedVector2Array(-10, -25, 10, -25, 30, -5, 30, 5, 20, 16, -20, 16, -30, 5, -30, -5)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=314886138]
+
+[node name="ShootingTimer" type="Timer" parent="." unique_id=2047355092]
+wait_time = 0.5
+autostart = true
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

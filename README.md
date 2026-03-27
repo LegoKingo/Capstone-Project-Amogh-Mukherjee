@@ -10,3 +10,6 @@ The shooting/explosion/menu sound effects are from https://opengameart.org/conte
 The music is from https://opengameart.org/content/through-space by MaxStack
 
 Both of these sources are under the following creative commons license: https://creativecommons.org/licenses/by/3.0/
+
+GUI Theme based on "Space Worm" by softwave on Itch.io
+Link to theme source: https://softwave.itch.io/godot-retro-theme-space-worm

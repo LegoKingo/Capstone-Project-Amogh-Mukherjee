@@ -13,6 +13,3 @@ Both of these sources are under the following creative commons license: https://
 
 GUI Theme based on "Space Worm" by softwave on Itch.io
 Link to theme source: https://softwave.itch.io/godot-retro-theme-space-worm
-
-Dyslexia Mode Font is OpenDyslexic
-Find out more at https://opendyslexic.org/

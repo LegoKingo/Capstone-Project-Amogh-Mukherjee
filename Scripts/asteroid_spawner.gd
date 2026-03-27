@@ -6,8 +6,6 @@ class_name AsteroidSpawner
 @export var medium_asteroid_scene : PackedScene
 @export var small_asteroid_scene : PackedScene
 
-const utils = preload("res://Capstone-Project-Amogh-Mukherjee/Scripts/Utilities.gd")
-
 @export var count = 5
 @export var spawn_offset_dist = 500
 
@@ -50,7 +48,6 @@ func asteroid_destroyed(new_size: int, position: Vector2):
 	if new_size == 2 or new_size == 3:
 		for i in range(2):
 			spawn_asteroid(new_size, position)
-			print("Mitosis!")
 	else:
 		#No-Need-To-Spawn
 		return

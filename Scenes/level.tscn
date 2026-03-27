@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://d3py803ony4q6"]
 
+[ext_resource type="PackedScene" uid="uid://dbdni8gsfxuyu" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/player_cam.tscn" id="1_m7end"]
 [ext_resource type="PackedScene" uid="uid://co00yhxa70qmn" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/player.tscn" id="1_tumq0"]
 [ext_resource type="PackedScene" uid="uid://dyanxpmarngvf" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/asteroid_spawner.tscn" id="2_k5f4k"]
 [ext_resource type="PackedScene" uid="uid://cuepcatypikpl" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/ufo_spawner.tscn" id="3_riv6x"]
+[ext_resource type="PackedScene" uid="uid://bxbgsx4uodofe" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/level_manager.tscn" id="4_7eg2i"]
 
 [node name="Level" type="Node2D" unique_id=1496186178]
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1137113873]
-position = Vector2(963, 541)
+[node name="PlayerCam" parent="." unique_id=169366405 instance=ExtResource("1_m7end")]
 
 [node name="Player" parent="." unique_id=157252003 instance=ExtResource("1_tumq0")]
 position = Vector2(641, 534)
@@ -15,3 +16,5 @@ position = Vector2(641, 534)
 [node name="AsteroidSpawner" parent="." unique_id=2120366464 instance=ExtResource("2_k5f4k")]
 
 [node name="UFOSpawner" parent="." unique_id=1314058867 instance=ExtResource("3_riv6x")]
+
+[node name="LevelManager" parent="." unique_id=839554878 instance=ExtResource("4_7eg2i")]

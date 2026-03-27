@@ -8,8 +8,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("shoot"):
 		var bullet = bullet_scene.instantiate() as Bullet
-		bullet.IsItUFO = false
+		bullet.IsItUFO = true
 		get_tree().root.add_child(bullet)
+		
 		
 		var shot_direction = Vector2(0, -1).rotated(get_parent().rotation)
 		bullet.position = global_position

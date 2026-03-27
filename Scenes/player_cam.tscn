@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dbdni8gsfxuyu"]
+
+[ext_resource type="PackedScene" uid="uid://dctjd2hretpci" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/pause_menu.tscn" id="1_f64tx"]
+[ext_resource type="Script" uid="uid://bwl2m34b5xvwp" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/player_cam.gd" id="1_qgbhy"]
+
+[node name="PlayerCam" type="Camera2D" unique_id=169366405]
+offset = Vector2(960, 540)
+script = ExtResource("1_qgbhy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2108872225]
+layer = 0
+
+[node name="PauseMenu" parent="CanvasLayer" unique_id=756365004 instance=ExtResource("1_f64tx")]
+visible = false
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 800.0
+offset_top = 400.0
+offset_right = 847.57117
+offset_bottom = 446.90118
+grow_horizontal = 1
+grow_vertical = 1

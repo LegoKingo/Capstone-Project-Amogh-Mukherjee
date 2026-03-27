@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://dctjd2hretpci"]
+
+[ext_resource type="Script" uid="uid://d1tt2kinxwaol" path="res://Capstone-Project-Amogh-Mukherjee/Scripts/pause_menu.gd" id="1_2ml1x"]
+[ext_resource type="Theme" uid="uid://bqdn1hl5c7fvl" path="res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/space_worm_theme.tres" id="1_5h2qh"]
+[ext_resource type="Theme" uid="uid://covdbh00gxggx" path="res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/space_worm_dyslexia_mode.tres" id="3_l0rlf"]
+
+[node name="PauseMenu" type="Control" unique_id=756365004]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -160.0
+offset_right = -120.803955
+offset_bottom = -160.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.985, 2.985)
+theme = ExtResource("1_5h2qh")
+script = ExtResource("1_2ml1x")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=219839768]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.106000006
+anchor_right = -0.106000006
+offset_left = 14.205023
+offset_top = -32.49581
+offset_right = 138.49315
+grow_horizontal = 2
+theme = ExtResource("1_5h2qh")
+bbcode_enabled = true
+text = "[b][Paused][b]"
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2015404280]
+layout_mode = 0
+offset_left = -24.455612
+offset_right = 140.54439
+offset_bottom = 146.0
+
+[node name="RegularMenu" type="VBoxContainer" parent="MarginContainer" unique_id=733208784]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Resume" type="Button" parent="MarginContainer/RegularMenu" unique_id=745922958]
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+text = "Resume"
+
+[node name="Quit" type="Button" parent="MarginContainer/RegularMenu" unique_id=411875069]
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+text = "Quit"
+
+[node name="Options" type="Button" parent="MarginContainer/RegularMenu" unique_id=1660285245]
+layout_mode = 2
+theme = ExtResource("3_l0rlf")
+theme_type_variation = &"FlatButton"
+text = "Accessibility"
+
+[node name="Accessibility" type="VBoxContainer" parent="MarginContainer" unique_id=1043655381]
+visible = false
+layout_mode = 2
+
+[node name="DyslexiaMode" type="Button" parent="MarginContainer/Accessibility" unique_id=1264514776]
+layout_mode = 2
+text = "Toggle 
+Dyslexia Mode"
+
+[node name="Return" type="Button" parent="MarginContainer/Accessibility" unique_id=710044790]
+layout_mode = 2
+text = "Return"
+
+[connection signal="pressed" from="MarginContainer/RegularMenu/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MarginContainer/RegularMenu/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MarginContainer/RegularMenu/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MarginContainer/Accessibility/DyslexiaMode" to="." method="_on_dyslexia_mode_pressed"]
+[connection signal="pressed" from="MarginContainer/Accessibility/Return" to="." method="_on_return_pressed"]

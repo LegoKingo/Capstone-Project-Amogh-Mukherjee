@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bxbgsx4uodofe"]
+
+[ext_resource type="Script" uid="uid://c2fdmrx0e4r7" path="res://Capstone-Project-Amogh-Mukherjee/Scripts/level_manager.gd" id="1_57ano"]
+
+[node name="LevelManager" type="Node" unique_id=839554878]
+script = ExtResource("1_57ano")

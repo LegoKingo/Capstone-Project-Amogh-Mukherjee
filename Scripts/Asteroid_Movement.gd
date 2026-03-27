@@ -6,14 +6,13 @@ var direction: Vector2
 
 @onready var explosion_particles = $PlayerExplosionParticles
 
-const utils = preload("res://Capstone-Project-Amogh-Mukherjee/Scripts/Utilities.gd")
+@onready var utils = get_node("/root/Utilities")
 
 var size : int
 
 signal on_asteroid_destroyed(size: int, position: Vector2)
 
 func _ready() -> void:
-	print(size)
 	var x = randf_range(-1,1)
 	var y = randf_range(-1,1)
 	direction = Vector2(x,y)
@@ -23,8 +22,14 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
+	if (body as Player).is_invincible:
+		return
+	if (body as Player).is_boosting:
+		on_destroy()
+		return
 	if body is Player:
-		#body.queue_free()
+		(body as Player).on_player_died.emit()
+		body.queue_free()
 		on_destroy()
 
 func emit_explosion():

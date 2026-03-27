@@ -47,3 +47,11 @@ func targeting_algorithm() -> Vector2:
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area is Bullet && area.collision_layer == 2:
+		area.queue_free()
+		queue_free()
+		explosion_particles.emitting = true
+		explosion_particles.reparent(get_tree().root)

@@ -7,6 +7,10 @@ var IsItUFO : bool = false
 @onready var sprite2D = $Sprite2D
 @onready var ufo_bullet_sprite = preload("res://Capstone-Project-Amogh-Mukherjee/Assets/UFO_bullet.png")
 @onready var normal_sprite = preload("res://Capstone-Project-Amogh-Mukherjee/Assets/bullet.png")
+var loopCounter: int
+@onready var rect = get_viewport().size
+
+@onready var utils = get_node("/root/Utilities")
 
 func _ready():
 	if IsItUFO == true:
@@ -19,4 +23,11 @@ func _process(delta: float) -> void:
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	queue_free()
+	if utils.loopingBullets && !IsItUFO:
+		loopCounter += 1
+		position.x = wrapf(position.x, 0, rect.x)
+		position.y = wrapf(position.y, 0, rect.y)
+		if loopCounter > utils.loopMax:
+			queue_free()
+	else:
+		queue_free()

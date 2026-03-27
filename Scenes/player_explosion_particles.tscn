@@ -4,7 +4,6 @@
 
 [node name="PlayerExplosionParticles" type="CPUParticles2D" unique_id=1779740493]
 emitting = false
-lifetime = 6.0
 one_shot = true
 explosiveness = 1.0
 spread = 180.0

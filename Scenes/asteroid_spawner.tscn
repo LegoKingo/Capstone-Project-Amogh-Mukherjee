@@ -1,6 +1,12 @@
 [gd_scene format=3 uid="uid://dyanxpmarngvf"]
 
 [ext_resource type="Script" uid="uid://obv2vkpcrmeq" path="res://Capstone-Project-Amogh-Mukherjee/Scripts/asteroid_spawner.gd" id="1_lfvqk"]
+[ext_resource type="PackedScene" uid="uid://bwhyqo3rjfukq" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/large_asteroid.tscn" id="2_l56pk"]
+[ext_resource type="PackedScene" uid="uid://c1mgowm7qn5hp" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/medium_asteroid.tscn" id="3_4a8f2"]
+[ext_resource type="PackedScene" uid="uid://crlqdpxds2bbo" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/small_asteroid.tscn" id="4_mma4r"]
 
 [node name="AsteroidSpawner" type="Node" unique_id=2120366464]
 script = ExtResource("1_lfvqk")
+large_asteroid_scene = ExtResource("2_l56pk")
+medium_asteroid_scene = ExtResource("3_4a8f2")
+small_asteroid_scene = ExtResource("4_mma4r")

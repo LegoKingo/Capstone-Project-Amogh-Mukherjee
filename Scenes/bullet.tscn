@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bmanoe6bbshwh"]
+
+[ext_resource type="Texture2D" uid="uid://plsssr6creik" path="res://Capstone-Project-Amogh-Mukherjee/Assets/bullet.png" id="1_2dvp2"]
+[ext_resource type="Script" uid="uid://bbj2svkfnf4nb" path="res://Capstone-Project-Amogh-Mukherjee/Scripts/bullet.gd" id="1_3na0m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3na0m"]
+
+[node name="Bullet" type="Area2D" unique_id=516652666]
+scale = Vector2(0.5, 0.5)
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("1_3na0m")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=785606124]
+texture = ExtResource("1_2dvp2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=162626730]
+shape = SubResource("RectangleShape2D_3na0m")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=242697730]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

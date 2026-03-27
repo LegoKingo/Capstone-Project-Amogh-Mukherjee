@@ -1,18 +1,42 @@
 extends CharacterBody2D
 class_name Player
 
+@onready var utils = get_node("/root/Utilities")
 @export var max_speed = 10
 @export var rotation_speed = 3.5
 @export var velocity_damping_factor = .5
 @export var linear_velocity = 200
 
-var input_vector: Vector2
 
+
+signal on_player_died
+signal bomb_exploded
+
+@onready var invincibility_timer = $InvincibilityTimer
+@onready var blinking_timer = $BlinkingTimer
+@onready var sprite = $Sprite2D
+@onready var explosion_particles = $PlayerExplosionParticles
+@onready var boost_timer = $BoostTimer
+@onready var boost_cooldown = $BoostCooldown
+@onready var dodge_timer = $DodgeTimer
+
+var is_boosting: bool
+var can_boost: bool = true
+
+var is_invincible: bool
+var input_vector: Vector2
 var rotation_direction: int
 
-func _process(delta):
+func _ready() -> void:
+	blinking_timer.timeout.connect(toggle_visibility)
+	invincibility_timer.timeout.connect(stop_invincibility)
+	boost_timer.timeout.connect(boost_cooldown.start)
+	boost_cooldown.timeout.connect(end_boost)
+	dodge_timer.timeout.connect(stop_invincibility)
+
+func _process(_delta):
 	input_vector.x = Input.get_action_strength("rotate_left") - Input.get_action_strength("rotate_right")
-	input_vector.y = Input.get_action_strength("backwards_thrust") - Input.get_action_strength("thrust")
+	input_vector.y = Input.get_action_strength("thrust") - Input.get_action_strength("backwards_thrust")
 	
 	if Input.is_action_pressed("rotate_left"):
 		rotation_direction = -1
@@ -21,6 +45,21 @@ func _process(delta):
 	else:
 		rotation_direction = 0
 	
+	if Input.is_action_just_pressed("boost") && utils.boostUnlock:
+		if can_boost:
+			boost()
+	
+	if Input.is_action_just_pressed("bomb") && utils.bombUnlock:
+		if utils.bombCounter == 3:
+			return
+		utils.bombCounter += 1
+		bomb_exploded.emit()
+		
+	
+	if Input.is_action_just_pressed("dodge") && utils.dodgeUnlock:
+		dodge()
+	
+
 
 func _physics_process(delta: float) -> void:
 	rotation += (rotation_direction * rotation_speed * delta)
@@ -33,11 +72,13 @@ func _physics_process(delta: float) -> void:
 	move_and_collide(velocity * delta)
 
 func accelerate_forward(delta: float):
-	velocity += (input_vector * linear_velocity * delta).rotated(rotation)
+	velocity += -(input_vector * linear_velocity * delta).rotated(rotation)
 	velocity.limit_length(max_speed)
 
 func accelerate_backward(delta: float):
-	velocity += (input_vector * linear_velocity * delta).rotated(rotation)
+	if !utils.backwardsMovement:
+		return
+	velocity += -(input_vector * linear_velocity * delta).rotated(rotation)
 	velocity.limit_length(max_speed)
 
 func decelerate(delta: float):
@@ -45,3 +86,46 @@ func decelerate(delta: float):
 	
 	if velocity.y >= -0.1 && velocity.y <= 0.1:
 		velocity.y = 0
+
+func start_invincibility():
+	is_invincible = true
+	blinking_timer.start()
+	invincibility_timer.start()
+
+func toggle_visibility():
+	if sprite.visible:
+		sprite.visible = false
+	else:
+		sprite.visible = true
+
+func stop_invincibility():
+	is_invincible = false
+	sprite.visible = true
+	blinking_timer.stop()
+	invincibility_timer.stop()
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if is_invincible:
+		return
+	
+	if area is Bullet && !is_boosting:
+		on_player_died.emit()
+		queue_free()
+		area.queue_free()
+		explosion_particles.emitting = true
+		explosion_particles.reparent(get_tree().root)
+
+func boost():
+	velocity *= 5
+	is_boosting = true
+	can_boost = false
+	boost_timer.start()
+
+func end_boost():
+	is_boosting = false
+	can_boost = true
+
+func dodge():
+	is_invincible = true
+	blinking_timer.start()
+	dodge_timer.start()

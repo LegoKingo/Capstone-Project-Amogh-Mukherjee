@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://cuepcatypikpl"]
+
+[ext_resource type="Script" uid="uid://4mb1wic6o173" path="res://Capstone-Project-Amogh-Mukherjee/Scripts/ufo_spawner.gd" id="1_sttlv"]
+[ext_resource type="Script" uid="uid://couqt5yhiebrk" path="res://Capstone-Project-Amogh-Mukherjee/Scripts/ufo_timer.gd" id="2_7nkj3"]
+[ext_resource type="PackedScene" uid="uid://b51x7ny724d41" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/ufo.tscn" id="2_8rui1"]
+
+[sub_resource type="Curve2D" id="Curve2D_1a1js"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 3071, 53, 0, 0, 0, 0, 2477, 162, 0, 0, 0, 0, 1789.31, 76.73303, 0, 0, 0, 0, 1273.31, 183.73303, 0, 0, 0, 0, 1012, 63, 0, 0, 0, 0, 272, 211, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[sub_resource type="Curve2D" id="Curve2D_sttlv"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 115, -10, 0, 0, 0, 0, -583.166, 49.07251, 0, 0, 0, 0, -999, -45, 0, 0, 0, 0, -1489.166, 90.07251, 0, 0, 0, 0, -1621, -23, 0, 0, 0, 0, -2094, 91, 0, 0, 0, 0, -3036, -195)
+}
+point_count = 7
+
+[node name="UFOSpawner" type="Node" unique_id=1314058867]
+script = ExtResource("1_sttlv")
+ufo_scene = ExtResource("2_8rui1")
+
+[node name="Timer" type="Timer" parent="." unique_id=804010720]
+script = ExtResource("2_7nkj3")
+
+[node name="TopPath" type="Path2D" parent="." unique_id=1350420378]
+position = Vector2(-279.04395, 91.80676)
+curve = SubResource("Curve2D_1a1js")
+
+[node name="PathToFollow1" type="PathFollow2D" parent="TopPath" unique_id=1496268133]
+position = Vector2(3071, 53)
+rotation = 3.1415927
+rotates = false
+
+[node name="BottomPath" type="Path2D" parent="." unique_id=1467698409]
+position = Vector2(2349.166, 952.9275)
+curve = SubResource("Curve2D_sttlv")
+
+[node name="PathToFollow2" type="PathFollow2D" parent="BottomPath" unique_id=1684729395]
+position = Vector2(115, -10)
+rotation = 3.1415927
+rotates = false

@@ -10,3 +10,6 @@ script = ExtResource("1_lfvqk")
 large_asteroid_scene = ExtResource("2_l56pk")
 medium_asteroid_scene = ExtResource("3_4a8f2")
 small_asteroid_scene = ExtResource("4_mma4r")
+
+[node name="Timer" type="Timer" parent="." unique_id=747770958]
+wait_time = 10.0

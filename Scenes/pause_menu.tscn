@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://d1tt2kinxwaol" path="res://Capstone-Project-Amogh-Mukherjee/Scripts/pause_menu.gd" id="1_2ml1x"]
 [ext_resource type="Theme" uid="uid://bqdn1hl5c7fvl" path="res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/space_worm_theme.tres" id="1_5h2qh"]
-[ext_resource type="Theme" uid="uid://covdbh00gxggx" path="res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/space_worm_dyslexia_mode.tres" id="3_l0rlf"]
 
 [node name="PauseMenu" type="Control" unique_id=756365004]
 process_mode = 2
@@ -22,7 +21,7 @@ scale = Vector2(2.985, 2.985)
 theme = ExtResource("1_5h2qh")
 script = ExtResource("1_2ml1x")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=219839768]
+[node name="PausedTitle" type="RichTextLabel" parent="." unique_id=219839768]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.106000006
@@ -36,10 +35,15 @@ bbcode_enabled = true
 text = "[b][Paused][b]"
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=2015404280]
-layout_mode = 0
-offset_left = -24.455612
-offset_right = 140.54439
-offset_bottom = 146.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.162
+anchor_right = -0.162
+offset_left = -13.650241
+offset_right = 141.34976
+offset_bottom = 122.0
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
 
 [node name="RegularMenu" type="VBoxContainer" parent="MarginContainer" unique_id=733208784]
 layout_mode = 2
@@ -48,6 +52,7 @@ size_flags_vertical = 4
 
 [node name="Resume" type="Button" parent="MarginContainer/RegularMenu" unique_id=745922958]
 layout_mode = 2
+theme = ExtResource("1_5h2qh")
 theme_type_variation = &"FlatButton"
 text = "Resume"
 
@@ -58,25 +63,42 @@ text = "Quit"
 
 [node name="Options" type="Button" parent="MarginContainer/RegularMenu" unique_id=1660285245]
 layout_mode = 2
-theme = ExtResource("3_l0rlf")
 theme_type_variation = &"FlatButton"
-text = "Accessibility"
+text = "Options"
 
 [node name="Accessibility" type="VBoxContainer" parent="MarginContainer" unique_id=1043655381]
 visible = false
 layout_mode = 2
 
-[node name="DyslexiaMode" type="Button" parent="MarginContainer/Accessibility" unique_id=1264514776]
+[node name="HSlider" type="HSlider" parent="MarginContainer/Accessibility" unique_id=701606689]
 layout_mode = 2
-text = "Toggle 
-Dyslexia Mode"
+theme = ExtResource("1_5h2qh")
+min_value = 50.0
+step = 10.0
+value = 50.0
+tick_count = 6
 
 [node name="Return" type="Button" parent="MarginContainer/Accessibility" unique_id=710044790]
 layout_mode = 2
 text = "Return"
 
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/Accessibility" unique_id=1683033026]
+layout_mode = 2
+theme = ExtResource("1_5h2qh")
+text = "Music"
+
+[node name="AccessibilityTitle" type="RichTextLabel" parent="." unique_id=1859104380]
+visible = false
+layout_mode = 0
+offset_left = -20.100494
+offset_top = -14.405359
+offset_right = 135.00838
+offset_bottom = 3.0150738
+text = "      Enemy Speed"
+
 [connection signal="pressed" from="MarginContainer/RegularMenu/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="MarginContainer/RegularMenu/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="MarginContainer/RegularMenu/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="MarginContainer/Accessibility/DyslexiaMode" to="." method="_on_dyslexia_mode_pressed"]
+[connection signal="drag_ended" from="MarginContainer/Accessibility/HSlider" to="." method="_on_h_slider_drag_ended"]
 [connection signal="pressed" from="MarginContainer/Accessibility/Return" to="." method="_on_return_pressed"]
+[connection signal="toggled" from="MarginContainer/Accessibility/CheckButton" to="." method="_on_check_button_toggled"]

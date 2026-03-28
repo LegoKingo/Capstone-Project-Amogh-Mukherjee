@@ -26,19 +26,31 @@ extends Node
 
 var dodgeCounter: int = 0
 var bombCounter: int = 0
+var pauseCounter: int = 0
+var gameSpeedMult = 1.0
 
+var max_lives: int = 3
+var tutorial_complete: bool = false
 var loopingBullets : bool = false
 const loopMax: int = 3
 var backwardsMovement : bool = false
 var boostUnlock : bool = true
 var dodgeUnlock: bool = true
-var bombUnlock: bool = false
+var bombUnlock: bool = true
 var scoreLaundering: bool = false
-var MusicUnlock: bool = false
+var musicOn: bool = false
+var musicPurchase : bool = true
 var pauseUnlock: bool = true
 var shopUnlock: bool = false
 var emailUnlock: bool = false
 
-var dyslexiaMode: bool = true
+signal game_speed_changed(newSpeed: float)
+signal score_changed(addScore: float)
+signal bomb_exploded()
+signal play_explosion()
+
+var endOfLevelScore : float
+var moneyCount : float
+
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS

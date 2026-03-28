@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://dyanxpmarngvf" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/asteroid_spawner.tscn" id="2_k5f4k"]
 [ext_resource type="PackedScene" uid="uid://cuepcatypikpl" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/ufo_spawner.tscn" id="3_riv6x"]
 [ext_resource type="PackedScene" uid="uid://bxbgsx4uodofe" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/level_manager.tscn" id="4_7eg2i"]
+[ext_resource type="PackedScene" uid="uid://bmuyq1o1ffgt4" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/explosion.tscn" id="6_t7j1n"]
+[ext_resource type="PackedScene" uid="uid://b51x7ny724d41" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/ufo.tscn" id="7_uy14b"]
 
 [node name="Level" type="Node2D" unique_id=1496186178]
 
@@ -18,3 +20,8 @@ position = Vector2(641, 534)
 [node name="UFOSpawner" parent="." unique_id=1314058867 instance=ExtResource("3_riv6x")]
 
 [node name="LevelManager" parent="." unique_id=839554878 instance=ExtResource("4_7eg2i")]
+
+[node name="Explosion" parent="." unique_id=1828249993 instance=ExtResource("6_t7j1n")]
+
+[node name="UFO" parent="." unique_id=516216222 instance=ExtResource("7_uy14b")]
+position = Vector2(1038, 621)

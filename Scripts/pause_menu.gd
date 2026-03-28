@@ -4,18 +4,22 @@ extends Control
 @onready var regular_menu = get_node("MarginContainer/RegularMenu")
 @onready var accessibility = get_node("MarginContainer/Accessibility")
 @onready var utils = get_node("/root/Utilities")
+@onready var pause_title = get_node("PausedTitle")
+@onready var accessibility_title = get_node("AccessibilityTitle")
+@onready var slider = get_node("MarginContainer/Accessibility/HSlider")
+@onready var music_box = get_node("MarginContainer/Accessibility/CheckButton")
+
+signal play_music(should_play: bool)
 
 @onready var current_theme = get_tree().root.theme
 
-var dyslexia_mode = false
 
 func _ready() -> void:
-	if utils.dyslexiaMode:
-		theme = load("res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/space_worm_dyslexia_mode.tres")
-		print(theme)
+	slider.value = utils.gameSpeedMult * 100
+	if utils.musicPurchase:
+		music_box.show()
 	else:
-		theme = load("res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/space_worm_theme.tres")
-
+		music_box.hide()
 func _on_resume_pressed() -> void:
 	self.hide()
 	player_cam.pause()
@@ -28,18 +32,29 @@ func _on_quit_pressed() -> void:
 
 func _on_options_pressed() -> void:
 	regular_menu.hide()
+	pause_title.hide()
+	accessibility_title.show()
 	accessibility.show()
 
 
 func _on_return_pressed() -> void:
 	accessibility.hide()
+	accessibility_title.hide()
+	pause_title.show()
 	regular_menu.show()
 
 
-func _on_dyslexia_mode_pressed() -> void:
-	if dyslexia_mode:
-		utils.dyslexiaMode = false
+func _on_h_slider_drag_ended(value_changed: bool) -> void:
+	if value_changed:
+		utils.gameSpeedMult = slider.value / 100
+		utils.game_speed_changed.emit(utils.gameSpeedMult)
+		print(utils.gameSpeedMult)
+
+
+func _on_check_button_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		utils.musicOn = true
+		play_music.emit(true)
 	else:
-		utils.dyslexiaMode = true
-	
-	
+		utils.musicOn = false
+		play_music.emit(false)

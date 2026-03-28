@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ctih8mauv83d" path="res://Capstone-Project-Amogh-Mukherjee/Assets/UFO.png" id="1_v2cu5"]
 [ext_resource type="PackedScene" uid="uid://bmanoe6bbshwh" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/bullet.tscn" id="2_6t8i0"]
 [ext_resource type="PackedScene" uid="uid://ct85to3m68ptt" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/player_explosion_particles.tscn" id="3_6t8i0"]
+[ext_resource type="PackedScene" uid="uid://bmuyq1o1ffgt4" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/explosion.tscn" id="5_s7lq0"]
 
 [node name="UFO" type="Area2D" unique_id=516216222]
 rotation = 3.1415927
@@ -26,5 +27,8 @@ polygon = PackedVector2Array(-10, -25, 10, -25, 30, -5, 30, 5, 20, 16, -20, 16, 
 wait_time = 0.5
 autostart = true
 
+[node name="Explosion" parent="." unique_id=1828249993 instance=ExtResource("5_s7lq0")]
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

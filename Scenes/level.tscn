@@ -7,10 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://cuepcatypikpl" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/ufo_spawner.tscn" id="3_riv6x"]
 [ext_resource type="PackedScene" uid="uid://bxbgsx4uodofe" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/level_manager.tscn" id="4_7eg2i"]
 [ext_resource type="PackedScene" uid="uid://bmuyq1o1ffgt4" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/explosion.tscn" id="6_t7j1n"]
-[ext_resource type="PackedScene" uid="uid://b51x7ny724d41" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/ufo.tscn" id="7_uy14b"]
+[ext_resource type="PackedScene" uid="uid://ditcj6axmcw4h" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/player_gui.tscn" id="9_bdvoi"]
 
 [node name="Level" type="Node2D" unique_id=1496186178]
 script = ExtResource("1_awjfc")
+
+[node name="PlayerGUI" parent="." unique_id=1902397978 instance=ExtResource("9_bdvoi")]
+show_behind_parent = true
 
 [node name="PlayerCam" parent="." unique_id=169366405 instance=ExtResource("1_m7end")]
 
@@ -24,6 +27,3 @@ position = Vector2(641, 534)
 [node name="LevelManager" parent="." unique_id=839554878 instance=ExtResource("4_7eg2i")]
 
 [node name="Explosion" parent="." unique_id=1828249993 instance=ExtResource("6_t7j1n")]
-
-[node name="UFO" parent="." unique_id=516216222 instance=ExtResource("7_uy14b")]
-position = Vector2(1038, 621)

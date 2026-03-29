@@ -10,6 +10,7 @@ class_name AsteroidSpawner
 @export var spawn_offset_dist = 500
 
 @onready var timer = $Timer
+@onready var level = $".."
 
 func _ready() -> void:
 	timer.timeout.connect(timer_spawn)
@@ -45,7 +46,7 @@ func spawn_asteroid(asteroid_size: int, spawn_point: Vector2):
 	asteroid.size = asteroid_size
 	if !is_inside_tree():
 		return
-	get_tree().root.add_child.call_deferred(asteroid)
+	level.add_child.call_deferred(asteroid)
 	asteroid.global_position = spawn_point
 	asteroid.on_asteroid_destroyed.connect(asteroid_destroyed)
 

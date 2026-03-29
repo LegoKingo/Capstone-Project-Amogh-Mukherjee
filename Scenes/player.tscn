@@ -52,6 +52,9 @@ one_shot = true
 wait_time = 3.0
 one_shot = true
 
+[node name="DodgeTimer" type="Timer" parent="." unique_id=292855961]
+one_shot = true
+
 [node name="Area2D" type="Area2D" parent="." unique_id=1345652961]
 collision_mask = 17
 
@@ -59,9 +62,6 @@ collision_mask = 17
 polygon = PackedVector2Array(0, -68, 23, -46, 46, 22, 34, 34, 1, 23, -34, 34, -46, 22, -23, -45)
 
 [node name="PlayerExplosionParticles" parent="." unique_id=1779740493 instance=ExtResource("5_7e67y")]
-
-[node name="DodgeTimer" type="Timer" parent="." unique_id=292855961]
-one_shot = true
 
 [node name="PlayerInvincible" type="AudioStreamPlayer2D" parent="." unique_id=1971070816]
 stream = ExtResource("7_mt28t")

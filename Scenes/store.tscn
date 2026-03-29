@@ -73,6 +73,7 @@ offset_right = 413.0
 offset_bottom = 105.0
 theme_override_colors/default_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 35
+bbcode_enabled = true
 text = "-Zero Credits"
 
 [node name="Sprite2D" type="Sprite2D" parent="CurrentBalance" unique_id=1802198260]
@@ -111,7 +112,7 @@ text = "Graduate"
 [node name="Loan" type="Button" parent="VBoxContainer" unique_id=1318441430]
 layout_mode = 2
 theme_override_font_sizes/font_size = 70
-text = "Loans"
+text = "Wagers"
 
 [connection signal="item_clicked" from="ItemList" to="." method="_on_item_list_item_clicked"]
 [connection signal="pressed" from="VBoxContainer/Return" to="VBoxContainer/Return" method="_on_pressed"]

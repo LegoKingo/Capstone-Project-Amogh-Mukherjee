@@ -10,17 +10,15 @@ extends Node
 # -Dodge/On-Demand Invincibility
 	# Implemented
 # -Bomb
-	# Partially Implemented
-# -Score Laundering
-	# Not Implemented (needs score system first)
+	# Implemented
 # -Music
-	# Not Implemented 
+	# Implemented 
 # -Pause Button
-	# Rough feature implemented, needs menu
-# -Email System (Forced Purchase)
-	# needs menu first before feature can be implemented
-# -Shop Tax (Forced Purchase)
-	# needs menu + score system before it can be implemented
+	# Implemented
+# -Email System
+	# write emails + boolean logic
+# -Shop Tax 
+	# hide purchase button
 
 
 
@@ -33,24 +31,27 @@ var max_lives: int = 3
 const loopMax: int = 3
 var levels_played: int = 0
 var lives_left: int
+var target_score = 5000
 
+var wagers_unlocked: bool = false
 var tutorial_complete: bool = false
 var game_started: bool = false
 var quit_early: bool = false
 var game_over = false
 var time_up = false
+var bullets_looped: int
 
 
 var loopingBullets : bool = false
 var backwardsMovement : bool = false
-var boostUnlock : bool = true
-var dodgeUnlock: bool = true
-var bombUnlock: bool = true
-var scoreLaundering: bool = true
-var musicOn: bool = true
-var musicPurchase : bool = true
-var pauseUnlock: bool = true
-var unreadEmails: bool = true
+var boostUnlock : bool = false
+var dodgeUnlock: bool = false
+var bombUnlock: bool = false
+var musicOn: bool = false
+var musicPurchase : bool = false
+var pauseUnlock: bool = false
+var unreadEmails: bool = false
+var store_unlock: bool = false
 
 var store_dictionary = {
 	"Move Backwards": backwardsMovement, 
@@ -77,25 +78,35 @@ var email_count = 0
 var max_emails = 10
 var read_emails: Array[bool] = []
 var current_email: int
-var current_balance = 100
+var current_balance = 1000
 
 var current_loan_size: int = 0
+var successful_wagers: int = 0
 
 signal game_speed_changed(newSpeed: float)
 signal score_changed(addScore: float)
+
 signal bomb_exploded()
+signal dodge_executed()
+signal boosted()
 signal play_explosion()
 signal item_selected(index: int)
 signal update_money()
 signal add_new_email(email_num: int)
-signal successful_transaction()
+signal successful_transaction(index_num: int)
 signal end_of_game()
 
-var currentScore: int
+var current_score: int
 var endOfLevelScore : int
 var moneyCount : int
 
 func _ready() -> void:
+	successful_transaction.connect(set_bool)
 	read_emails.resize(max_emails)
 	read_emails.fill(false)
 	process_mode = Node.PROCESS_MODE_ALWAYS
+
+func set_bool(item_index: int):
+	print(store_items[item_index] + "is" + str(store_dictionary[store_items[item_index]]))
+	store_dictionary[store_items[item_index]] = true
+	print(store_items[item_index] + "is" + str(store_dictionary[store_items[item_index]]))

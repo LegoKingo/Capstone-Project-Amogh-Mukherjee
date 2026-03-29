@@ -27,7 +27,7 @@ offset_top = 124.0
 offset_right = 689.0
 offset_bottom = 164.0
 theme_override_font_sizes/normal_font_size = 40
-text = "From: [No Data]"
+text = "From: Your Pal Mo"
 
 [node name="Receiver" type="RichTextLabel" parent="." unique_id=170109926]
 layout_mode = 0
@@ -42,10 +42,10 @@ text = "To: employee20807032@flowinc.mail"
 layout_mode = 0
 offset_left = 256.0
 offset_top = 204.0
-offset_right = 838.0
+offset_right = 1641.0
 offset_bottom = 265.0
 theme_override_font_sizes/normal_font_size = 40
-text = "Subject: [No Data]"
+text = "Subject: I done goofed it real bad this time"
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=2117045308]
 show_behind_parent = true
@@ -57,32 +57,15 @@ offset_bottom = 826.0
 
 [node name="EmailBody" type="RichTextLabel" parent="." unique_id=1827258129]
 layout_mode = 0
-offset_left = 256.0
-offset_top = 265.0
+offset_left = 223.0
+offset_top = 289.0
 offset_right = 1696.0
 offset_bottom = 765.0
 theme_override_font_sizes/normal_font_size = 40
-text = "Dear sir or madam,
-I hope this email finds you well.
-If you're reading this, you're playtesting my first video game: 'Flow Inc'
-I know, I know, it's an honor, but you can stop blushing.
+bbcode_enabled = true
+text = "This is the default message from me, the developer. If you're seeing this, something has gone wrong! My bad! 
 
-Right now, I'm testing out the scrolling system of this test editor.
-
-Test
-
-Test
-
-Test
-
-Test
-
-Test
-
-Test
-
-Test
-
-Test"
+Best wishes,
+Mo"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

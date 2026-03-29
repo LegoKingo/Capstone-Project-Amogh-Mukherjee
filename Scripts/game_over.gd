@@ -15,7 +15,7 @@ func _ready() -> void:
 		return
 	if utils.current_loan_size > 0:
 		title.text = "Wager Lost"
-		text.text = "GAMBLING MALWARE DETECTED. CONTACTING SECURITY. LETHAL FORCE APPROVED."
+		text.text = "I honestly thought ye woullda been able to pull it off kid. A wager is a wager though, yer done here. Go home."
 		return_button.hide()
 		return
 	if utils.game_over:

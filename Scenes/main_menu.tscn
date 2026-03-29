@@ -52,6 +52,7 @@ icon_alignment = 1
 vertical_icon_alignment = 0
 
 [node name="Emails" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1169538679]
+layout_direction = 3
 layout_mode = 2
 text = "Emails"
 icon = ExtResource("3_rg74d")

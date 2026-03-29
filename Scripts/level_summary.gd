@@ -13,7 +13,7 @@ var bomb_cost = 1000
 var dodge_cost = 500
 var boost_cost = 400
 var life_value = 500
-
+var looped_bullet_value = 1000
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	eol_score.text = "Score: " + str(utils.endOfLevelScore)+ " points"
@@ -33,6 +33,7 @@ func calculate_deductions():
 	taxation_algorithm()
 	lives_check()
 	loan_check()
+	loop_check()
 
 
 func music_check():
@@ -99,7 +100,7 @@ func taxation_algorithm():
 func lives_check():
 	var life_bonus = utils.lives_left * life_value
 	utils.endOfLevelScore += life_bonus
-	if utils.lives_left > 1:
+	if utils.lives_left == 1:
 		var life_mod = "[p]One life remaining: +" + str(life_bonus) + " points[/p]"
 		score_mods.append(life_mod)
 	else:
@@ -112,8 +113,23 @@ func loan_check():
 		return
 	utils.endOfLevelScore += utils.current_loan_size
 	var loan_mod = "[p]WAGER COMPLETED: +" + str(utils.current_loan_size) + " points[/p]"
+	utils.successful_wagers += 1
 	score_mods.append(loan_mod)
 	utils.current_loan_size = 0
+
+func loop_check():
+	if !utils.loopingBullets:
+		return
+	if !utils.lifer_friendship:
+		return
+	if utils.looped_bullets == 0:
+		return
+	var loop_bonus = utils.looped_bullets * looped_bullet_value
+	utils.endOfLevelScore += loop_bonus
+	if utils.looped_bullets == 1:
+		var loop_mod = "[p]" + str(utils.looped_bullets) + " bullet looped: " + str(loop_bonus)+ " points[/p]"
+	else:
+		var loop_mod = "[p]" + str(utils.looped_bullets) + " bullets looped: " + str(loop_bonus)+ " points[/p]"
 
 
 func _on_return_pressed() -> void:

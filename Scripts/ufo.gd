@@ -4,7 +4,7 @@ class_name UFO
 @onready var explosion_particles = $PlayerExplosionParticles
 @onready var shooting_timer = $ShootingTimer
 @onready var utils = get_node("/root/Utilities")
-
+@onready var ufo_spawner = $"../../.."
 var asteroid_score = 500
 
 @export var ufo_bullet_scene : PackedScene
@@ -31,7 +31,7 @@ func shoot():
 	bullet.set_collision_layer_value(2, 0)
 	bullet.set_collision_layer_value(5,1)
 	
-	get_tree().root.add_child(bullet)
+	ufo_spawner.add_child(bullet)
 	bullet.position = global_position
 	bullet.direction = targeting_algorithm()
 

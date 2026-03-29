@@ -7,7 +7,6 @@ const player_start_position = Vector2(960,540)
 @onready var lives = utils.max_lives
 
 var score = 0
-var target_score = 5000
 
 var player_scene = preload("res://Capstone-Project-Amogh-Mukherjee/Scenes/player.tscn")
 var game_over_scene
@@ -21,6 +20,8 @@ func _ready() -> void:
 	utils.dodgeCounter = 0
 	utils.boostCounter = 0
 	utils.pauseCounter = 0
+	utils.bullets_looped = 0
+	utils.current_score = score
 	utils.score_changed.connect(change_score)
 	player.on_player_died.connect(decrease_lives)
 
@@ -45,8 +46,8 @@ func game_over():
 
 func change_score(added_score: float):
 	score += added_score
-	utils.currentScore = score
-	if score >= target_score:
+	utils.current_score = score
+	if score >= utils.target_score:
 		end_game()
 
 func end_game():

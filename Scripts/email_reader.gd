@@ -4,9 +4,12 @@ extends Control
 @onready var subject_line = $SubjectLine
 @onready var email_body = $EmailBody
 @onready var utils = get_node("/root/Utilities")
+@onready var text_data = get_node("/root/TextReader")
 
 func _ready() -> void:
-	subject_line.text = "Subject: This is Email #" + str(utils.current_email + 1)
+	subject_line.text = "Subject: " + text_data.rows[utils.current_email][2]
+	sender.text = "From: " + text_data.rows[utils.current_email][1]
+	email_body.text = text_data.rows[utils.current_email][3]
 
 
 func _on_button_pressed() -> void:

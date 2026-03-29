@@ -35,6 +35,7 @@ func _ready() -> void:
 	blinking_timer.timeout.connect(toggle_visibility)
 	invincibility_timer.timeout.connect(stop_invincibility)
 	boost_timer.timeout.connect(boost_cooldown.start)
+	boost_timer.timeout.connect(utils.boosted.emit)
 	boost_cooldown.timeout.connect(end_boost)
 	dodge_timer.timeout.connect(stop_invincibility)
 

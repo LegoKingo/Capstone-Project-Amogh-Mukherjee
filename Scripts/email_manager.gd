@@ -1,6 +1,7 @@
 extends Control
 
 @onready var utils = get_node("/root/Utilities")
+@onready var text_data = get_node("/root/TextReader")
 @onready var email_list = $EmailList
 @onready var unopened_email = preload("res://Capstone-Project-Amogh-Mukherjee/Assets/closed_envelope_alternate.png")
 @onready var opened_mail = preload("res://Capstone-Project-Amogh-Mukherjee/Assets/open_envelope.png")
@@ -35,7 +36,7 @@ func _on_button_pressed() -> void:
 func add_email(email_num: int):
 	if email_count > utils.max_emails:
 		return
-	var email_title = "Email #" + str(email_num)
+	var email_title = text_data.rows[email_num-1][2] + " from " + text_data.rows[email_num-1][1]
 	if utils.read_emails[email_num-1] == true:
 		email_list.add_item(email_title, opened_mail)
 	else:

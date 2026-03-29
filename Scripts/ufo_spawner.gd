@@ -6,6 +6,7 @@ extends Node
 @onready var top_path = $TopPath/PathToFollow1
 @onready var bottom_path = $BottomPath/PathToFollow2
 
+
 func _ready():
 	timer.timeout.connect(spawn_ufo)
 

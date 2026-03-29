@@ -4,20 +4,19 @@ extends Control
 @onready var credits = $CreditsPage
 @onready var title_page = $TitlePage
 @onready var options_page = $OptionsPage
+@onready var start_button = $TitlePage/MarginContainer/VBoxContainer/StartGame
 @onready var utils = get_node("/root/Utilities")
+@onready var slider = get_node("OptionsPage/MarginContainer/VBoxContainer/HSlider")
 
-var open_dyslexic = preload("res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/fonts/OpenDyslexic-Regular.otf")
 
 func _ready() -> void:
-	if utils.dyslexiaMode:
-		print("dyslexia mode on")
-		add_theme_font_override("OpenDyslexic", open_dyslexic)
-	else:
-		print("dyslexia mode off!")
-		theme = load("res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/space_worm_theme.tres")
+	slider.value = utils.gameSpeedMult * 100
+	if utils.game_started:
+		start_button.text = "Continue"
 
 func _on_start_game_pressed() -> void:
-	get_tree().change_scene_to_file("res://Capstone-Project-Amogh-Mukherjee/Scenes/level.tscn")
+	utils.game_started = true
+	get_tree().change_scene_to_file("res://Capstone-Project-Amogh-Mukherjee/Scenes/main_menu.tscn")
 
 func _on_options_pressed() -> void:
 	title_page.hide()
@@ -35,6 +34,10 @@ func _on_return_pressed() -> void:
 	title_page.show()
 
 
-func _on_accessibility_pressed() -> void:
-	utils.dyslexiaMode = true
-	get_tree().reload_current_scene()
+func _on_h_slider_drag_ended(value_changed: bool) -> void:
+	if value_changed:
+		utils.gameSpeedMult = slider.value / 100
+
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()

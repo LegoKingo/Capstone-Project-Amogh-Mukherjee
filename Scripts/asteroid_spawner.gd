@@ -9,14 +9,18 @@ class_name AsteroidSpawner
 @export var count = 5
 @export var spawn_offset_dist = 500
 
+@onready var timer = $Timer
+@onready var level = $".."
+
 func _ready() -> void:
+	timer.timeout.connect(timer_spawn)
 	for i in range(1, count):
 		var size = i % 3
 		if size == 0:
 			size = 3
 		var random_spawn_point = get_rand_position()
 		spawn_asteroid(size, random_spawn_point)
-		pass
+	timer.start()
 
 func get_rand_position() -> Vector2:
 	var size : Vector2 = get_viewport().size
@@ -40,14 +44,24 @@ func spawn_asteroid(asteroid_size: int, spawn_point: Vector2):
 		return
 	
 	asteroid.size = asteroid_size
-	get_tree().root.add_child.call_deferred(asteroid)
+	if !is_inside_tree():
+		return
+	level.add_child.call_deferred(asteroid)
 	asteroid.global_position = spawn_point
 	asteroid.on_asteroid_destroyed.connect(asteroid_destroyed)
 
 func asteroid_destroyed(new_size: int, position: Vector2):
 	if new_size == 2 or new_size == 3:
-		for i in range(2):
+		for i in range(1):
 			spawn_asteroid(new_size, position)
 	else:
 		#No-Need-To-Spawn
 		return
+
+func timer_spawn():
+	for i in range(1, count):
+		var size = i % 3
+		if size == 0:
+			size = 3
+		var random_spawn_point = get_rand_position()
+		spawn_asteroid(size, random_spawn_point)

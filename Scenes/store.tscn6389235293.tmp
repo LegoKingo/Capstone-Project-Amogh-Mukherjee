@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://c22dps6pkib7y"]
+
+[ext_resource type="Script" uid="uid://g5as4vajuhc2" path="res://Capstone-Project-Amogh-Mukherjee/Scripts/return_to_main.gd" id="1_5sdlv"]
+[ext_resource type="Script" uid="uid://2dnmeokm1pi8" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/store_manager.gd" id="1_w7nrx"]
+[ext_resource type="Theme" uid="uid://bqdn1hl5c7fvl" path="res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/space_worm_theme.tres" id="2_07sv8"]
+[ext_resource type="PackedScene" uid="uid://ccou3614r3qmo" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/item_box.tscn" id="2_ra7cr"]
+[ext_resource type="Texture2D" uid="uid://c640rgmjs7sy3" path="res://Capstone-Project-Amogh-Mukherjee/Assets/move_backwards.png" id="3_pnl4u"]
+[ext_resource type="Texture2D" uid="uid://cd6hyjbpxt8l4" path="res://Capstone-Project-Amogh-Mukherjee/Assets/boost.png" id="4_w7nrx"]
+[ext_resource type="Texture2D" uid="uid://clsmfgtrq3scf" path="res://Capstone-Project-Amogh-Mukherjee/Assets/dodge.png" id="5_ra7cr"]
+[ext_resource type="Texture2D" uid="uid://d2li0h2hfp3y5" path="res://Capstone-Project-Amogh-Mukherjee/Assets/bomb.png" id="6_g14ib"]
+[ext_resource type="Texture2D" uid="uid://deqxmysvw5wd5" path="res://Capstone-Project-Amogh-Mukherjee/Assets/looping_bullets.png" id="7_alsfu"]
+[ext_resource type="Texture2D" uid="uid://cst3yobj51php" path="res://Capstone-Project-Amogh-Mukherjee/Assets/music.png" id="8_kbi7u"]
+[ext_resource type="Texture2D" uid="uid://cb4m0je3bnogm" path="res://Capstone-Project-Amogh-Mukherjee/Assets/pause_button.png" id="9_rejku"]
+[ext_resource type="Texture2D" uid="uid://brwvx5m28kiyy" path="res://Capstone-Project-Amogh-Mukherjee/Assets/credits_icon.png" id="12_g14ib"]
+
+[node name="Store" type="Control" unique_id=1033794138]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w7nrx")
+
+[node name="ItemBox" parent="." unique_id=226146522 instance=ExtResource("2_ra7cr")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="ItemList" type="ItemList" parent="." unique_id=292820017]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 159.0
+offset_right = 1679.0
+offset_bottom = 298.0
+theme = ExtResource("2_07sv8")
+wraparound_items = false
+item_count = 7
+max_columns = 7
+same_column_width = true
+item_0/text = "Move Backwards"
+item_0/icon = ExtResource("3_pnl4u")
+item_1/text = "Pause Button"
+item_1/icon = ExtResource("9_rejku")
+item_2/text = "Music"
+item_2/icon = ExtResource("8_kbi7u")
+item_3/text = "Boost"
+item_3/icon = ExtResource("4_w7nrx")
+item_4/text = "Dodge"
+item_4/icon = ExtResource("5_ra7cr")
+item_5/text = "Bomb"
+item_5/icon = ExtResource("6_g14ib")
+item_6/text = "Looping Bullets"
+item_6/icon = ExtResource("7_alsfu")
+
+[node name="CurrentBalance" type="RichTextLabel" parent="." unique_id=1474852643]
+clip_contents = false
+layout_mode = 0
+offset_left = 219.0
+offset_top = 33.0
+offset_right = 567.0
+offset_bottom = 127.0
+theme_override_font_sizes/normal_font_size = 80
+text = "0"
+
+[node name="MoneyChanger" type="RichTextLabel" parent="CurrentBalance" unique_id=1206860448]
+visible = false
+layout_mode = 0
+offset_top = 65.0
+offset_right = 413.0
+offset_bottom = 105.0
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 35
+text = "-Zero Credits"
+
+[node name="Sprite2D" type="Sprite2D" parent="CurrentBalance" unique_id=1802198260]
+position = Vector2(-52.000004, 28)
+scale = Vector2(1.2, 1.097)
+texture = ExtResource("12_g14ib")
+
+[node name="Timer" type="Timer" parent="." unique_id=323926019]
+one_shot = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2014024957]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -390.0
+offset_top = -337.0
+offset_right = -91.0
+offset_bottom = -99.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Return" type="Button" parent="VBoxContainer" unique_id=103238648]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "Return"
+script = ExtResource("1_5sdlv")
+
+[node name="Graduate" type="Button" parent="VBoxContainer" unique_id=531721398]
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "Graduate"
+
+[node name="Loan" type="Button" parent="VBoxContainer" unique_id=1318441430]
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "Loans"
+
+[connection signal="item_clicked" from="ItemList" to="." method="_on_item_list_item_clicked"]
+[connection signal="pressed" from="VBoxContainer/Return" to="VBoxContainer/Return" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/Graduate" to="." method="_on_graduate_pressed"]
+[connection signal="pressed" from="VBoxContainer/Loan" to="." method="_on_loan_pressed"]

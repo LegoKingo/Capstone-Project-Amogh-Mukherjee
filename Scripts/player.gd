@@ -10,7 +10,6 @@ class_name Player
 
 
 signal on_player_died
-signal bomb_exploded
 
 @onready var invincibility_timer = $InvincibilityTimer
 @onready var blinking_timer = $BlinkingTimer
@@ -19,6 +18,11 @@ signal bomb_exploded
 @onready var boost_timer = $BoostTimer
 @onready var boost_cooldown = $BoostCooldown
 @onready var dodge_timer = $DodgeTimer
+
+
+@onready var invincible_sound: AudioStreamPlayer2D = $PlayerInvincible
+@onready var boost_sound: AudioStreamPlayer2D = $PlayerBoost
+@onready var bomb_sound: AudioStreamPlayer2D = $PlayerBomb
 
 var is_boosting: bool
 var can_boost: bool = true
@@ -31,6 +35,7 @@ func _ready() -> void:
 	blinking_timer.timeout.connect(toggle_visibility)
 	invincibility_timer.timeout.connect(stop_invincibility)
 	boost_timer.timeout.connect(boost_cooldown.start)
+	boost_timer.timeout.connect(utils.boosted.emit)
 	boost_cooldown.timeout.connect(end_boost)
 	dodge_timer.timeout.connect(stop_invincibility)
 
@@ -53,7 +58,8 @@ func _process(_delta):
 		if utils.bombCounter == 3:
 			return
 		utils.bombCounter += 1
-		bomb_exploded.emit()
+		bomb_sound.play()
+		utils.bomb_exploded.emit(false)
 		
 	
 	if Input.is_action_just_pressed("dodge") && utils.dodgeUnlock:
@@ -93,6 +99,7 @@ func start_invincibility():
 	invincibility_timer.start()
 
 func toggle_visibility():
+	invincible_sound.play()
 	if sprite.visible:
 		sprite.visible = false
 	else:
@@ -109,6 +116,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		return
 	
 	if area is Bullet && !is_boosting:
+		utils.play_explosion.emit()
 		on_player_died.emit()
 		queue_free()
 		area.queue_free()
@@ -116,6 +124,8 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		explosion_particles.reparent(get_tree().root)
 
 func boost():
+	utils.boostCounter +=1
+	boost_sound.play()
 	velocity *= 5
 	is_boosting = true
 	can_boost = false
@@ -126,6 +136,7 @@ func end_boost():
 	can_boost = true
 
 func dodge():
+	utils.dodgeCounter += 1
 	is_invincible = true
 	blinking_timer.start()
 	dodge_timer.start()

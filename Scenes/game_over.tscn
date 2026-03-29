@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://d4hw704gent7x"]
+
+[ext_resource type="Script" uid="uid://d2d60lkp8qv14" path="res://Capstone-Project-Amogh-Mukherjee/Scripts/game_over.gd" id="1_j14la"]
+
+[node name="GameOver" type="Control" unique_id=1498829022]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j14la")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=579227057]
+z_index = 50
+layout_mode = 0
+offset_left = 268.0
+offset_top = 167.0
+offset_right = 1621.0
+offset_bottom = 807.0
+
+[node name="GameOverTitle" type="RichTextLabel" parent="." unique_id=999725275]
+z_index = 100
+layout_mode = 0
+offset_left = 495.0
+offset_top = 240.0
+offset_right = 1421.0
+offset_bottom = 339.0
+theme_override_font_sizes/normal_font_size = 100
+text = "Game Over!"
+horizontal_alignment = 1
+
+[node name="GameOverText" type="RichTextLabel" parent="." unique_id=616642501]
+z_index = 100
+layout_mode = 0
+offset_left = 495.0
+offset_top = 339.0
+offset_right = 1505.0
+offset_bottom = 579.0
+theme_override_font_sizes/normal_font_size = 50
+text = "Time ran out and you couldn't reach the target score. There's always next time!"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=428497306]
+z_index = 100
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -332.0
+offset_top = 60.0
+offset_right = 299.0
+offset_bottom = 212.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Return" type="Button" parent="VBoxContainer" unique_id=53332752]
+z_index = 100
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "Return to Dashboard"
+
+[node name="Quit" type="Button" parent="VBoxContainer" unique_id=1972555251]
+z_index = 100
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "Quit Game"
+
+[connection signal="pressed" from="VBoxContainer/Return" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

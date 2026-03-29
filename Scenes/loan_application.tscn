@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://k3vxgjvhnntr"]
+
+[ext_resource type="Script" uid="uid://bfgh48mylbbxr" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/loan_application.gd" id="1_l2s70"]
+[ext_resource type="Script" uid="uid://du5835sj1nwxd" path="res://Capstone-Project-Amogh-Mukherjee/Scripts/return_to_store.gd" id="1_qtrlk"]
+[ext_resource type="Texture2D" uid="uid://brwvx5m28kiyy" path="res://Capstone-Project-Amogh-Mukherjee/Assets/credits_icon.png" id="3_16rah"]
+[ext_resource type="Texture2D" uid="uid://do3gtq6anxphh" path="res://Capstone-Project-Amogh-Mukherjee/Assets/the_salesman.png" id="4_87xij"]
+
+[node name="LoanApplication" type="Control" unique_id=14468195]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l2s70")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=390927758]
+layout_mode = 0
+offset_left = 295.0
+offset_top = 301.0
+offset_right = 1613.0
+offset_bottom = 818.0
+
+[node name="IncreaseLoan" type="Button" parent="." unique_id=2004628166]
+layout_mode = 0
+offset_left = 885.0
+offset_top = 658.0
+offset_right = 1111.0
+offset_bottom = 724.0
+theme_override_font_sizes/font_size = 60
+text = "Increase"
+
+[node name="DecreaseLoan" type="Button" parent="." unique_id=158966219]
+layout_mode = 0
+offset_left = 659.0
+offset_top = 658.0
+offset_right = 885.0
+offset_bottom = 724.0
+theme_override_font_sizes/font_size = 60
+text = "Decrease"
+
+[node name="TakeOutLoan" type="Button" parent="." unique_id=2039377489]
+layout_mode = 0
+offset_left = 659.0
+offset_top = 724.0
+offset_right = 1111.0
+offset_bottom = 798.0
+theme_override_font_sizes/font_size = 70
+text = "Make Bet"
+
+[node name="Return" type="Button" parent="." unique_id=1978015931]
+layout_mode = 0
+offset_left = 782.0
+offset_top = 868.0
+offset_right = 982.0
+offset_bottom = 942.0
+theme_override_font_sizes/font_size = 70
+text = "Return"
+script = ExtResource("1_qtrlk")
+
+[node name="Explanation" type="RichTextLabel" parent="." unique_id=1716149478]
+layout_mode = 0
+offset_left = 462.0
+offset_top = 322.0
+offset_right = 1514.0
+offset_bottom = 459.0
+theme_override_font_sizes/normal_font_size = 50
+text = "\"If yer looking to add some spice to yer work, I might wire a few credits over to ya tax-free, if yer willing to put on a show...\""
+
+[node name="CurrentBalance" type="RichTextLabel" parent="." unique_id=1413279227]
+clip_contents = false
+layout_mode = 0
+offset_left = 219.0
+offset_top = 33.0
+offset_right = 567.0
+offset_bottom = 127.0
+theme_override_font_sizes/normal_font_size = 80
+text = "0"
+
+[node name="Sprite2D" type="Sprite2D" parent="CurrentBalance" unique_id=1507427780]
+position = Vector2(-52.000004, 28)
+scale = Vector2(1.2, 1.097)
+texture = ExtResource("3_16rah")
+
+[node name="LoanAmount" type="RichTextLabel" parent="." unique_id=1164840234]
+clip_contents = false
+layout_mode = 0
+offset_left = 743.0
+offset_top = 543.0
+offset_right = 1091.0
+offset_bottom = 637.0
+theme_override_font_sizes/normal_font_size = 80
+text = "0"
+
+[node name="Sprite2D" type="Sprite2D" parent="LoanAmount" unique_id=1490406876]
+position = Vector2(-52.000004, 28)
+scale = Vector2(1.2, 1.097)
+texture = ExtResource("3_16rah")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=130876204]
+position = Vector2(378, 370)
+texture = ExtResource("4_87xij")
+
+[node name="Label" type="Label" parent="." unique_id=543576649]
+layout_mode = 0
+offset_left = 749.0
+offset_top = 493.0
+offset_right = 990.0
+offset_bottom = 534.0
+theme_override_font_sizes/font_size = 50
+text = "Wager Amount"
+
+[connection signal="pressed" from="IncreaseLoan" to="." method="_on_increase_loan_pressed"]
+[connection signal="pressed" from="DecreaseLoan" to="." method="_on_decrease_loan_pressed"]
+[connection signal="pressed" from="TakeOutLoan" to="." method="_on_take_out_loan_pressed"]
+[connection signal="pressed" from="Return" to="Return" method="_on_pressed"]

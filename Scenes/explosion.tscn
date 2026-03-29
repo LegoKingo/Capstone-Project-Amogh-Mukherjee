@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bmuyq1o1ffgt4"]
+
+[ext_resource type="AudioStream" uid="uid://ddm63f0efb7fg" path="res://Capstone-Project-Amogh-Mukherjee/Assets/sounds/explosions/4.wav" id="1_kal5o"]
+[ext_resource type="Script" uid="uid://bnnhgeoxu57yo" path="res://Capstone-Project-Amogh-Mukherjee/Scripts/explosion.gd" id="2_ousra"]
+
+[node name="Explosion" type="AudioStreamPlayer2D" unique_id=1828249993]
+stream = ExtResource("1_kal5o")
+volume_db = -20.0
+script = ExtResource("2_ousra")

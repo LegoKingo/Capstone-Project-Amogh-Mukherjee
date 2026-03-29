@@ -3,14 +3,19 @@ class_name UFO
 
 @onready var explosion_particles = $PlayerExplosionParticles
 @onready var shooting_timer = $ShootingTimer
+@onready var utils = get_node("/root/Utilities")
+@onready var ufo_spawner = $"../../.."
+var asteroid_score = 500
 
 @export var ufo_bullet_scene : PackedScene
 var path : PathFollow2D
-
-var speed = 500
+@onready var base_speed = 500
+@onready var speed = base_speed * utils.gameSpeedMult
 var current_point_on_path = 0
 
 func _ready() -> void:
+	utils.bomb_exploded.connect(on_destroyed)
+	utils.game_speed_changed.connect(change_speed)
 	shooting_timer.timeout.connect(shoot)
 
 func _process(delta: float) -> void:
@@ -26,10 +31,9 @@ func shoot():
 	bullet.set_collision_layer_value(2, 0)
 	bullet.set_collision_layer_value(5,1)
 	
-	get_tree().root.add_child(bullet)
+	ufo_spawner.add_child(bullet)
 	bullet.position = global_position
 	bullet.direction = targeting_algorithm()
-	bullet.bullet_speed = 100
 
 
 func targeting_algorithm() -> Vector2:
@@ -52,6 +56,21 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if area is Bullet && area.collision_layer == 2:
 		area.queue_free()
-		queue_free()
-		explosion_particles.emitting = true
-		explosion_particles.reparent(get_tree().root)
+		on_destroyed()
+
+
+func on_destroyed(counts_score: bool = true):
+	if counts_score:
+		utils.score_changed.emit(asteroid_score)
+	utils.play_explosion.emit()
+	queue_free()
+	explosion_particles.emitting = true
+	explosion_particles.reparent(get_tree().root)
+
+func change_speed(new_speed: float):
+	speed = base_speed * new_speed
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body is Player:
+		on_destroyed(false)

@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dctjd2hretpci" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/pause_menu.tscn" id="1_f64tx"]
 [ext_resource type="Script" uid="uid://bwl2m34b5xvwp" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/player_cam.gd" id="1_qgbhy"]
+[ext_resource type="AudioStream" uid="uid://pksojfswch28" path="res://Capstone-Project-Amogh-Mukherjee/Assets/sounds/through space.ogg" id="3_t5153"]
 
 [node name="PlayerCam" type="Camera2D" unique_id=169366405]
 offset = Vector2(960, 540)
@@ -23,3 +24,6 @@ offset_right = 847.57117
 offset_bottom = 446.90118
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1266259274]
+stream = ExtResource("3_t5153")

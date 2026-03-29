@@ -9,15 +9,18 @@
 [ext_resource type="Texture2D" uid="uid://cwpjdqbvip2vt" path="res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/textedit/TextEditWhite.png" id="5_3rf8f"]
 [ext_resource type="Texture2D" uid="uid://bk7etkvyd8tlh" path="res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/checkbox/Checkbox_Blue_Unchecked.png" id="5_f0op2"]
 [ext_resource type="Texture2D" uid="uid://c1nih1844agfm" path="res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/textedit/TextEditDisabled.png" id="6_ks1cx"]
+[ext_resource type="Texture2D" uid="uid://mt1461wksqiu" path="res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/checkbox/Checkbox_Black_Checked.png" id="7_r0fhm"]
+[ext_resource type="Texture2D" uid="uid://emxstesqlas" path="res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/checkbox/checkbox_black_unchecked.png" id="7_wfy5q"]
 [ext_resource type="Texture2D" uid="uid://cdrydq61w6idd" path="res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/scrollbar/Slider_Blue_Grabber.png" id="8_8ni7u"]
 [ext_resource type="Texture2D" uid="uid://w58p2fbmrwo0" path="res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/general/LighterBlue.png" id="8_88cds"]
 [ext_resource type="Texture2D" uid="uid://dpy10unqk34u2" path="res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/scrollbar/Slider_Blue_Background.png" id="9_x6qk5"]
 [ext_resource type="Texture2D" uid="uid://dwg5gov6nq5ke" path="res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/button/ButtonClose1.png" id="11_8miur"]
+[ext_resource type="Texture2D" uid="uid://8v1at1272bkt" path="res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/scrollbar/scrollbar_black_background.png" id="11_h5x25"]
 [ext_resource type="Texture2D" uid="uid://c1hsd2l68hy8a" path="res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/general/PanelOutine.png" id="12_dm4bf"]
+[ext_resource type="Texture2D" uid="uid://cmmmu3bu6dca5" path="res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/scrollbar/slider_horizontal_black.png" id="12_fpvqo"]
 [ext_resource type="Texture2D" uid="uid://bq82py2yefyko" path="res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/button/ButtonClose2.png" id="12_hyqct"]
 [ext_resource type="Texture2D" uid="uid://bpgt4mjq4l5ww" path="res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/separator/Sep_Blue.png" id="12_qrsf7"]
 [ext_resource type="Texture2D" uid="uid://dlinn1i1xxn3c" path="res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/button/BlankBackCross.png" id="12_wikou"]
-[ext_resource type="Texture2D" uid="uid://ce5ygfmxxljpi" path="res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/general/Green.png" id="12_xlbym"]
 [ext_resource type="Texture2D" uid="uid://cyymtcpg466gl" path="res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/button/ButtonLargeTest2.png" id="13_nbyou"]
 [ext_resource type="Texture2D" uid="uid://cneafxl0el8lq" path="res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/general/GreenPressed.png" id="14_6r6q4"]
 [ext_resource type="Texture2D" uid="uid://c4eavohk31koc" path="res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/general/Purple.png" id="14_xbunk"]
@@ -73,7 +76,7 @@ texture_margin_bottom = 8.0
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vxkxq"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cn27s"]
-texture = ExtResource("1_lfy6v")
+texture = ExtResource("3_s42hj")
 texture_margin_left = 8.0
 texture_margin_top = 8.0
 texture_margin_right = 8.0
@@ -113,7 +116,7 @@ expand_margin_right = 4.0
 expand_margin_bottom = 3.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ee4vg"]
-texture = ExtResource("9_x6qk5")
+texture = ExtResource("11_h5x25")
 texture_margin_left = 5.0
 texture_margin_top = 5.0
 texture_margin_right = 5.0
@@ -130,23 +133,21 @@ texture = ExtResource("9_x6qk5")
 texture = ExtResource("9_x6qk5")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wgu4n"]
-texture = ExtResource("9_x6qk5")
+texture = ExtResource("11_h5x25")
 texture_margin_left = 3.0
 texture_margin_right = 3.0
 expand_margin_top = 6.0
 expand_margin_bottom = 6.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ciy72"]
-bg_color = Color(0.5529412, 0.654902, 0.6784314, 1)
+bg_color = Color(0.5019608, 0.5019608, 0.5019608, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k7w8t"]
-bg_color = Color(0.5529412, 0.654902, 0.6784314, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ux5l"]
-bg_color = Color(0.5529412, 0.654902, 0.6784314, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xlbym"]
-texture = ExtResource("12_xlbym")
+texture = ExtResource("3_s42hj")
 texture_margin_left = 6.0
 texture_margin_top = 6.0
 texture_margin_right = 6.0
@@ -155,7 +156,7 @@ expand_margin_left = 2.0
 expand_margin_right = 2.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b2ttu"]
-bg_color = Color(0.08627451, 0.2627451, 0.3019608, 1)
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mqfcp"]
 texture = ExtResource("5_3rf8f")
@@ -328,15 +329,22 @@ texture_margin_top = 8.0
 texture_margin_right = 8.0
 texture_margin_bottom = 8.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wfy5q"]
+texture = ExtResource("19_ogek7")
+expand_margin_left = 30.0
+expand_margin_top = 10.0
+expand_margin_right = 30.0
+expand_margin_bottom = 10.0
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7nmis"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7nmis"]
-bg_color = Color(0.60770583, 0.55690855, 0.7689174, 1)
+bg_color = Color(0, 0, 0, 1)
 corner_detail = 1
 expand_margin_left = 2.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ogek7"]
-bg_color = Color(0.29408714, 0.3370718, 0.5021897, 1)
+bg_color = Color(0, 0, 0, 1)
 corner_detail = 1
 expand_margin_left = 2.0
 
@@ -422,6 +430,8 @@ expand_margin_bottom = 6.0
 modulate_color = Color(0.29411766, 0.3372549, 0.5019608, 1)
 
 [resource]
+default_font = ExtResource("35_b2ttu")
+default_font_size = 0
 Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
@@ -452,11 +462,11 @@ CheckBox/styles/hover = SubResource("StyleBoxEmpty_v7vvw")
 CheckBox/styles/normal = SubResource("StyleBoxEmpty_7w4co")
 CheckBox/styles/pressed = SubResource("StyleBoxEmpty_vxkxq")
 CheckButton/colors/font_color = Color(0.831373, 0.815686, 0.784314, 1)
-CheckButton/icons/checked = ExtResource("4_pbf4m")
+CheckButton/icons/checked = ExtResource("7_r0fhm")
 CheckButton/icons/checked_disabled = ExtResource("4_pbf4m")
 CheckButton/icons/checked_disabled_mirrored = ExtResource("4_pbf4m")
 CheckButton/icons/checked_mirrored = ExtResource("4_pbf4m")
-CheckButton/icons/unchecked = ExtResource("5_f0op2")
+CheckButton/icons/unchecked = ExtResource("7_wfy5q")
 CheckButton/icons/unchecked_disabled = ExtResource("5_f0op2")
 CheckButton/icons/unchecked_disabled_mirrored = ExtResource("5_f0op2")
 CheckButton/icons/unchecked_mirrored = ExtResource("5_f0op2")
@@ -479,7 +489,7 @@ HScrollBar/styles/grabber = SubResource("StyleBoxTexture_4xi7t")
 HScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_tu48x")
 HScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_lf3m6")
 HScrollBar/styles/scroll = SubResource("StyleBoxTexture_ee4vg")
-HSlider/icons/grabber = ExtResource("4_7hqu0")
+HSlider/icons/grabber = ExtResource("12_fpvqo")
 HSlider/icons/grabber_disabled = SubResource("ImageTexture_qmn46")
 HSlider/icons/grabber_highlight = ExtResource("4_7hqu0")
 HSlider/styles/grabber_area = SubResource("StyleBoxTexture_mp0hy")
@@ -570,6 +580,14 @@ TextEdit/colors/caret_color = Color(0, 0, 0, 1)
 TextEdit/colors/font_color = Color(1, 1, 1, 1)
 TextEdit/fonts/font = ExtResource("1_6u0fb")
 TextEdit/styles/normal = SubResource("StyleBoxTexture_o80ik")
+TooltipLabel/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+TooltipLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+TooltipLabel/colors/font_shadow_color = Color(0, 0, 0, 0)
+TooltipLabel/constants/outline_size = 0
+TooltipLabel/constants/shadow_offset_x = 1
+TooltipLabel/constants/shadow_offset_y = 1
+TooltipLabel/font_sizes/font_size = 16
+TooltipPanel/styles/panel = SubResource("StyleBoxTexture_wfy5q")
 Tree/colors/font_color = Color(0, 0, 0, 1)
 Tree/fonts/font = ExtResource("1_6u0fb")
 Tree/fonts/title_button_font = ExtResource("1_6u0fb")

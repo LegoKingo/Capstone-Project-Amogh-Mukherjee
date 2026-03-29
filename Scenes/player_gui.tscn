@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://ditcj6axmcw4h"]
+
+[ext_resource type="Texture2D" uid="uid://c4qa64wf0edr5" path="res://Capstone-Project-Amogh-Mukherjee/Assets/Spritesheet.png" id="1_mlj61"]
+[ext_resource type="Script" uid="uid://c3wf63r3is76i" path="res://Capstone-Project-Amogh-Mukherjee/Scripts/player_gui.gd" id="1_r2gf2"]
+[ext_resource type="Texture2D" uid="uid://cd6hyjbpxt8l4" path="res://Capstone-Project-Amogh-Mukherjee/Assets/boost.png" id="1_yhpy2"]
+[ext_resource type="Texture2D" uid="uid://clsmfgtrq3scf" path="res://Capstone-Project-Amogh-Mukherjee/Assets/dodge.png" id="2_r2gf2"]
+[ext_resource type="Texture2D" uid="uid://d2li0h2hfp3y5" path="res://Capstone-Project-Amogh-Mukherjee/Assets/bomb.png" id="3_v7ku6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmbom"]
+atlas = ExtResource("1_mlj61")
+region = Rect2(145, 17, 95, 95)
+
+[node name="PlayerGUI" type="Control" unique_id=1902397978]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r2gf2")
+
+[node name="Boost" type="Sprite2D" parent="." unique_id=1668144698]
+visible = false
+position = Vector2(301, 1008)
+texture = ExtResource("1_yhpy2")
+
+[node name="BoostFade" type="Timer" parent="Boost" unique_id=24486207]
+wait_time = 0.2
+
+[node name="Dodge" type="Sprite2D" parent="." unique_id=1320076833]
+visible = false
+position = Vector2(182, 1012)
+texture = ExtResource("2_r2gf2")
+
+[node name="DodgeFade" type="Timer" parent="Dodge" unique_id=1318425239]
+wait_time = 0.2
+
+[node name="Bombs" type="Sprite2D" parent="." unique_id=1826878779]
+visible = false
+position = Vector2(73, 1012)
+texture = ExtResource("3_v7ku6")
+
+[node name="BombFade" type="Timer" parent="Bombs" unique_id=219346074]
+wait_time = 0.2
+
+[node name="Lives" type="Label" parent="." unique_id=1106534629]
+layout_mode = 0
+offset_left = 1786.0
+offset_top = 60.0
+offset_right = 1880.0
+offset_bottom = 154.0
+theme_override_font_sizes/font_size = 100
+text = "3"
+
+[node name="Ship" type="Sprite2D" parent="Lives" unique_id=1099725098]
+position = Vector2(-64, 27)
+texture = SubResource("AtlasTexture_vmbom")
+
+[node name="Score" type="RichTextLabel" parent="." unique_id=365905728]
+clip_contents = false
+layout_mode = 0
+offset_left = 43.0
+offset_top = 40.0
+offset_right = 1581.0
+offset_bottom = 215.0
+theme_override_font_sizes/normal_font_size = 100
+text = "Score: 0"
+
+[node name="InvincibilityTimer" type="Timer" parent="." unique_id=14480048]
+wait_time = 3.0
+one_shot = true
+
+[node name="BoostCooldown" type="Timer" parent="." unique_id=957276059]
+wait_time = 3.0
+one_shot = true
+
+[node name="DodgeTimer" type="Timer" parent="." unique_id=1335916079]
+one_shot = true
+
+[connection signal="timeout" from="Boost/BoostFade" to="." method="_on_boost_fade_timeout"]
+[connection signal="timeout" from="Dodge/DodgeFade" to="." method="_on_dodge_fade_timeout"]
+[connection signal="timeout" from="Bombs/BombFade" to="." method="_on_bomb_fade_timeout"]

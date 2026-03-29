@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://ditrxw37lhifg"]
+
+[ext_resource type="Script" uid="uid://cjwpq66cmpf0i" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/graduation_application.gd" id="1_1q6st"]
+[ext_resource type="Script" uid="uid://du5835sj1nwxd" path="res://Capstone-Project-Amogh-Mukherjee/Scripts/return_to_store.gd" id="2_jm44p"]
+[ext_resource type="Texture2D" uid="uid://brwvx5m28kiyy" path="res://Capstone-Project-Amogh-Mukherjee/Assets/credits_icon.png" id="3_qsm5p"]
+
+[node name="GraduationApplication" type="Control" unique_id=393057912]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1q6st")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=156170318]
+layout_mode = 0
+offset_left = 371.0
+offset_top = 226.0
+offset_right = 1563.0
+offset_bottom = 789.0
+
+[node name="Apply" type="Button" parent="." unique_id=605555731]
+layout_mode = 0
+offset_left = 1078.0
+offset_top = 673.0
+offset_right = 1247.0
+offset_bottom = 747.0
+theme_override_font_sizes/font_size = 70
+text = "Apply"
+
+[node name="Return" type="Button" parent="." unique_id=1580256170]
+layout_mode = 0
+offset_left = 588.0
+offset_top = 673.0
+offset_right = 788.0
+offset_bottom = 747.0
+theme_override_font_sizes/font_size = 70
+text = "Return"
+script = ExtResource("2_jm44p")
+
+[node name="Requirements" type="RichTextLabel" parent="." unique_id=1972997602]
+layout_mode = 0
+offset_left = 399.0
+offset_top = 268.0
+offset_right = 1563.0
+offset_bottom = 600.0
+theme_override_font_sizes/normal_font_size = 40
+text = "In order to graduate from employee orientation and become a full time Play Facilitator, prospective employees must submit a modest application fee of 100,000 credits to illustrate their minimum competence with our proprietary fLoW(TM) systems.
+
+We look forward to hearing from you.
+
+Regards,
+Flow Inc. Human Resources Department"
+
+[node name="CurrentBalance" type="RichTextLabel" parent="." unique_id=1724413470]
+clip_contents = false
+layout_mode = 0
+offset_left = 219.0
+offset_top = 33.0
+offset_right = 567.0
+offset_bottom = 127.0
+theme_override_font_sizes/normal_font_size = 80
+text = "0"
+
+[node name="Sprite2D" type="Sprite2D" parent="CurrentBalance" unique_id=1513391762]
+position = Vector2(-52.000004, 28)
+scale = Vector2(1.2, 1.097)
+texture = ExtResource("3_qsm5p")
+
+[node name="DenialMessage" type="RichTextLabel" parent="." unique_id=984956878]
+visible = false
+layout_mode = 0
+offset_left = 535.0
+offset_top = 832.0
+offset_right = 1440.0
+offset_bottom = 959.0
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 100
+text = "Not enough credits!"
+
+[node name="Timer" type="Timer" parent="." unique_id=1342627394]
+one_shot = true
+
+[connection signal="pressed" from="Apply" to="." method="_on_apply_pressed"]
+[connection signal="pressed" from="Return" to="Return" method="_on_pressed"]

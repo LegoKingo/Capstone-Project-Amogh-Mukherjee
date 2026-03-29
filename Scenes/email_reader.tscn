@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://bmxhieaetw20c"]
+
+[ext_resource type="Script" uid="uid://csgijy8pdpcvy" path="res://Capstone-Project-Amogh-Mukherjee/Scripts/email_reader.gd" id="1_uk8dj"]
+
+[node name="EmailReader" type="Control" unique_id=1681881315]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uk8dj")
+
+[node name="Button" type="Button" parent="." unique_id=1650466308]
+layout_mode = 0
+offset_left = 850.0
+offset_top = 862.0
+offset_right = 1036.0
+offset_bottom = 935.0
+theme_override_font_sizes/font_size = 35
+text = "Return"
+
+[node name="Sender" type="RichTextLabel" parent="." unique_id=432323942]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 124.0
+offset_right = 689.0
+offset_bottom = 164.0
+theme_override_font_sizes/normal_font_size = 40
+text = "From: [No Data]"
+
+[node name="Receiver" type="RichTextLabel" parent="." unique_id=170109926]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 164.0
+offset_right = 850.0
+offset_bottom = 204.0
+theme_override_font_sizes/normal_font_size = 40
+text = "To: employee20807032@flowinc.mail"
+
+[node name="SubjectLine" type="RichTextLabel" parent="." unique_id=203781171]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 204.0
+offset_right = 838.0
+offset_bottom = 265.0
+theme_override_font_sizes/normal_font_size = 40
+text = "Subject: [No Data]"
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2117045308]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 186.0
+offset_top = 91.0
+offset_right = 1757.0
+offset_bottom = 826.0
+
+[node name="EmailBody" type="RichTextLabel" parent="." unique_id=1827258129]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 265.0
+offset_right = 1696.0
+offset_bottom = 765.0
+theme_override_font_sizes/normal_font_size = 40
+text = "Dear sir or madam,
+I hope this email finds you well.
+If you're reading this, you're playtesting my first video game: 'Flow Inc'
+I know, I know, it's an honor, but you can stop blushing.
+
+Right now, I'm testing out the scrolling system of this test editor.
+
+Test
+
+Test
+
+Test
+
+Test
+
+Test
+
+Test
+
+Test
+
+Test"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

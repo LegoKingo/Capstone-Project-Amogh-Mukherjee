@@ -6,6 +6,6 @@ func _ready():
 	timer.wait_time = lifetime
 	timer.timeout.connect(queue_free)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if emitting && timer.is_stopped():
 		timer.start()

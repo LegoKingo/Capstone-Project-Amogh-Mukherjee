@@ -78,14 +78,14 @@ step = 10.0
 value = 50.0
 tick_count = 6
 
-[node name="Return" type="Button" parent="MarginContainer/Accessibility" unique_id=710044790]
-layout_mode = 2
-text = "Return"
-
 [node name="CheckButton" type="CheckButton" parent="MarginContainer/Accessibility" unique_id=1683033026]
 layout_mode = 2
 theme = ExtResource("1_5h2qh")
 text = "Music"
+
+[node name="Return" type="Button" parent="MarginContainer/Accessibility" unique_id=710044790]
+layout_mode = 2
+text = "Return"
 
 [node name="AccessibilityTitle" type="RichTextLabel" parent="." unique_id=1859104380]
 visible = false
@@ -100,5 +100,5 @@ text = "      Enemy Speed"
 [connection signal="pressed" from="MarginContainer/RegularMenu/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="MarginContainer/RegularMenu/Options" to="." method="_on_options_pressed"]
 [connection signal="drag_ended" from="MarginContainer/Accessibility/HSlider" to="." method="_on_h_slider_drag_ended"]
-[connection signal="pressed" from="MarginContainer/Accessibility/Return" to="." method="_on_return_pressed"]
 [connection signal="toggled" from="MarginContainer/Accessibility/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="pressed" from="MarginContainer/Accessibility/Return" to="." method="_on_return_pressed"]

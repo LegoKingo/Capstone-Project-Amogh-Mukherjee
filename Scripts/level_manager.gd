@@ -1,22 +1,26 @@
 extends Node
 class_name LevelManager
 
-signal player_life_lost(lives_left: int)
 
 const player_start_position = Vector2(960,540)
 @onready var utils = get_node("/root/Utilities")
 @onready var lives = utils.max_lives
 
 var score = 0
-var target_score = 500
+var target_score = 5000
 
 var player_scene = preload("res://Capstone-Project-Amogh-Mukherjee/Scenes/player.tscn")
 var game_over_scene
 @onready var player = $"../Player" as Player
 
 func _ready() -> void:
+	
+	utils.game_over = false
+	utils.quit_early = false
 	utils.bombCounter = 0
 	utils.dodgeCounter = 0
+	utils.boostCounter = 0
+	utils.pauseCounter = 0
 	utils.score_changed.connect(change_score)
 	player.on_player_died.connect(decrease_lives)
 
@@ -36,14 +40,17 @@ func respawn(player: Player):
 	player.start_invincibility()
 
 func game_over():
-	print("Game Over!")
+	utils.game_over = true
+	utils.end_of_game.emit()
 
 func change_score(added_score: float):
 	score += added_score
-	print(score)
+	utils.currentScore = score
 	if score >= target_score:
 		end_game()
 
 func end_game():
 	utils.endOfLevelScore = score
-	print("Your final score is: " + str(utils.endOfLevelScore))
+	utils.lives_left = lives
+	utils.game_over = false
+	utils.end_of_game.emit()

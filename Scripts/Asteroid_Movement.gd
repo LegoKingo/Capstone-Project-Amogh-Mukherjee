@@ -65,9 +65,11 @@ func _on_area_entered(area: Area2D) -> void:
 	if area is Bullet:
 		if !(area as Bullet).IsItUFO:
 				utils.score_changed.emit(asteroid_score)
-				on_destroy()
+				on_destroy(true)
+		else:
+			on_destroy()
 		area.queue_free()
-		on_destroy(false)
+
 
 
 func change_speed(new_speed: float):

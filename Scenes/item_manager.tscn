@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b2edy0nnwo3ij"]
+
+[ext_resource type="Script" uid="uid://c53cimw2oqc6b" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/item_manager.gd" id="1_qqhjq"]
+
+[node name="ItemManager" type="Node" unique_id=1863104630]
+script = ExtResource("1_qqhjq")

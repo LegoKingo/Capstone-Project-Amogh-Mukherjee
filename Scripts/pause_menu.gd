@@ -26,7 +26,11 @@ func _on_resume_pressed() -> void:
 
 
 func _on_quit_pressed() -> void:
-	get_tree().quit()
+	utils.quit_early = true
+	utils.game_over = true
+	player_cam.pause()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	utils.end_of_game.emit()
 
 
 

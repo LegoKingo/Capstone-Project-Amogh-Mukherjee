@@ -6,5 +6,7 @@ func _ready():
 	utils.play_explosion.connect(play_sound)
 
 func play_sound():
+	if !is_inside_tree():
+		return
 	explosion.play()
 	print("explosion")

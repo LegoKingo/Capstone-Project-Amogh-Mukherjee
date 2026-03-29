@@ -9,7 +9,7 @@ func _ready() -> void:
 	utils.pauseCounter = 0
 	pause_scene.play_music.connect(music_toggle)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause") && utils.pauseUnlock:
 		pause()
 		utils.pauseCounter += 1

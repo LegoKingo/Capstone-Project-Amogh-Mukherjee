@@ -6,7 +6,7 @@ var bullet_scene = preload("res://Capstone-Project-Amogh-Mukherjee/Scenes/bullet
 func _ready() -> void:
 	pass
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("shoot"):
 		shoot_sound.play( )
 		var bullet = bullet_scene.instantiate() as Bullet

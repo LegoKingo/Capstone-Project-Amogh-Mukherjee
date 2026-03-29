@@ -123,6 +123,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		explosion_particles.reparent(get_tree().root)
 
 func boost():
+	utils.boostCounter +=1
 	boost_sound.play()
 	velocity *= 5
 	is_boosting = true
@@ -134,6 +135,7 @@ func end_boost():
 	can_boost = true
 
 func dodge():
+	utils.dodgeCounter += 1
 	is_invincible = true
 	blinking_timer.start()
 	dodge_timer.start()

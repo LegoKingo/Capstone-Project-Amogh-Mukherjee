@@ -43,6 +43,8 @@ func spawn_asteroid(asteroid_size: int, spawn_point: Vector2):
 		return
 	
 	asteroid.size = asteroid_size
+	if !is_inside_tree():
+		return
 	get_tree().root.add_child.call_deferred(asteroid)
 	asteroid.global_position = spawn_point
 	asteroid.on_asteroid_destroyed.connect(asteroid_destroyed)

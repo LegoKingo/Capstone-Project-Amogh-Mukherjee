@@ -639,6 +639,10 @@ layout_mode = 2
 text = "Credits
 "
 
+[node name="Quit" type="Button" parent="TitlePage/MarginContainer/VBoxContainer" unique_id=264627523]
+layout_mode = 2
+text = "Quit"
+
 [node name="CreditsPage" type="CanvasLayer" parent="." unique_id=977797121]
 visible = false
 
@@ -712,6 +716,7 @@ text = "Enemy Speed"
 [connection signal="pressed" from="TitlePage/MarginContainer/VBoxContainer/StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="TitlePage/MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="TitlePage/MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="TitlePage/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="CreditsPage/Return" to="." method="_on_return_pressed"]
 [connection signal="drag_ended" from="OptionsPage/MarginContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_drag_ended"]
 [connection signal="pressed" from="OptionsPage/MarginContainer/VBoxContainer/Return" to="." method="_on_return_pressed"]

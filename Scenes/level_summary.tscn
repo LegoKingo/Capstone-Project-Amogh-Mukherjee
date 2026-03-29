@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://bjpfgvoqs1baf"]
+
+[ext_resource type="Script" uid="uid://bspcxct7r4ddu" path="res://Capstone-Project-Amogh-Mukherjee/Scripts/level_summary.gd" id="1_wvqw4"]
+[ext_resource type="Texture2D" uid="uid://brwvx5m28kiyy" path="res://Capstone-Project-Amogh-Mukherjee/Assets/credits_icon.png" id="2_pskxu"]
+
+[node name="LevelSummary" type="Control" unique_id=388124917]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wvqw4")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1283816663]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 160.0
+offset_right = 1657.0
+offset_bottom = 808.0
+
+[node name="PayoutLabel" type="RichTextLabel" parent="." unique_id=1405554940]
+clip_contents = false
+layout_mode = 0
+offset_left = 408.0
+offset_top = 631.0
+offset_right = 706.0
+offset_bottom = 679.0
+theme_override_font_sizes/normal_font_size = 50
+text = "Final Payout:"
+
+[node name="FinalPayout" type="RichTextLabel" parent="PayoutLabel" unique_id=1629778698]
+layout_mode = 0
+offset_left = 362.0
+offset_top = 5.0
+offset_right = 690.0
+offset_bottom = 53.0
+theme_override_font_sizes/normal_font_size = 50
+text = "10000 Credits"
+
+[node name="Sprite2D" type="Sprite2D" parent="PayoutLabel" unique_id=289344393]
+position = Vector2(326, 22)
+texture = ExtResource("2_pskxu")
+
+[node name="ScoreModifiers" type="RichTextLabel" parent="." unique_id=980753054]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 274.0
+offset_right = 1507.0
+offset_bottom = 593.0
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+
+[node name="EndofLevelScore" type="RichTextLabel" parent="." unique_id=107468157]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 217.0
+offset_right = 1588.0
+offset_bottom = 274.0
+theme_override_font_sizes/normal_font_size = 50
+text = "Score: 5000 points"
+
+[node name="LevelTitle" type="RichTextLabel" parent="." unique_id=1579422172]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 69.0
+offset_right = 1657.0
+offset_bottom = 153.0
+theme_override_font_sizes/normal_font_size = 100
+text = "Level Complete!"
+horizontal_alignment = 1
+
+[node name="Return" type="Button" parent="." unique_id=948517738]
+layout_mode = 0
+offset_left = 634.0
+offset_top = 841.0
+offset_right = 1273.0
+offset_bottom = 919.0
+theme_override_font_sizes/font_size = 75
+text = "Return to Dashboard"
+
+[connection signal="pressed" from="Return" to="." method="_on_return_pressed"]

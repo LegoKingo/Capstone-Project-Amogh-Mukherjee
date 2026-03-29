@@ -21,7 +21,6 @@
 [ext_resource type="Texture2D" uid="uid://bq82py2yefyko" path="res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/button/ButtonClose2.png" id="12_hyqct"]
 [ext_resource type="Texture2D" uid="uid://bpgt4mjq4l5ww" path="res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/separator/Sep_Blue.png" id="12_qrsf7"]
 [ext_resource type="Texture2D" uid="uid://dlinn1i1xxn3c" path="res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/button/BlankBackCross.png" id="12_wikou"]
-[ext_resource type="Texture2D" uid="uid://ce5ygfmxxljpi" path="res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/general/Green.png" id="12_xlbym"]
 [ext_resource type="Texture2D" uid="uid://cyymtcpg466gl" path="res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/button/ButtonLargeTest2.png" id="13_nbyou"]
 [ext_resource type="Texture2D" uid="uid://cneafxl0el8lq" path="res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/general/GreenPressed.png" id="14_6r6q4"]
 [ext_resource type="Texture2D" uid="uid://c4eavohk31koc" path="res://Capstone-Project-Amogh-Mukherjee/Assets/space-worm-theme/general/Purple.png" id="14_xbunk"]
@@ -141,16 +140,14 @@ expand_margin_top = 6.0
 expand_margin_bottom = 6.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ciy72"]
-bg_color = Color(0.5529412, 0.654902, 0.6784314, 1)
+bg_color = Color(0.5019608, 0.5019608, 0.5019608, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k7w8t"]
-bg_color = Color(0.5529412, 0.654902, 0.6784314, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ux5l"]
-bg_color = Color(0.5529412, 0.654902, 0.6784314, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xlbym"]
-texture = ExtResource("12_xlbym")
+texture = ExtResource("3_s42hj")
 texture_margin_left = 6.0
 texture_margin_top = 6.0
 texture_margin_right = 6.0
@@ -159,7 +156,7 @@ expand_margin_left = 2.0
 expand_margin_right = 2.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b2ttu"]
-bg_color = Color(0.08627451, 0.2627451, 0.3019608, 1)
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mqfcp"]
 texture = ExtResource("5_3rf8f")
@@ -332,15 +329,22 @@ texture_margin_top = 8.0
 texture_margin_right = 8.0
 texture_margin_bottom = 8.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wfy5q"]
+texture = ExtResource("19_ogek7")
+expand_margin_left = 30.0
+expand_margin_top = 10.0
+expand_margin_right = 30.0
+expand_margin_bottom = 10.0
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7nmis"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7nmis"]
-bg_color = Color(0.60770583, 0.55690855, 0.7689174, 1)
+bg_color = Color(0, 0, 0, 1)
 corner_detail = 1
 expand_margin_left = 2.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ogek7"]
-bg_color = Color(0.29408714, 0.3370718, 0.5021897, 1)
+bg_color = Color(0, 0, 0, 1)
 corner_detail = 1
 expand_margin_left = 2.0
 
@@ -576,6 +580,14 @@ TextEdit/colors/caret_color = Color(0, 0, 0, 1)
 TextEdit/colors/font_color = Color(1, 1, 1, 1)
 TextEdit/fonts/font = ExtResource("1_6u0fb")
 TextEdit/styles/normal = SubResource("StyleBoxTexture_o80ik")
+TooltipLabel/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+TooltipLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+TooltipLabel/colors/font_shadow_color = Color(0, 0, 0, 0)
+TooltipLabel/constants/outline_size = 0
+TooltipLabel/constants/shadow_offset_x = 1
+TooltipLabel/constants/shadow_offset_y = 1
+TooltipLabel/font_sizes/font_size = 16
+TooltipPanel/styles/panel = SubResource("StyleBoxTexture_wfy5q")
 Tree/colors/font_color = Color(0, 0, 0, 1)
 Tree/fonts/font = ExtResource("1_6u0fb")
 Tree/fonts/title_button_font = ExtResource("1_6u0fb")

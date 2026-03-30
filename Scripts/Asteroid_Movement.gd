@@ -12,13 +12,13 @@ var direction: Vector2
 var base_score = 100
 var bump_boost = 50
 @onready var speed = base_speed * utils.gameSpeedMult
-@onready var asteroid_score = scoring_algorithm()
 @onready var pause_menu = preload("res://Capstone-Project-Amogh-Mukherjee/Scenes/pause_menu.tscn")
 var size : int
-
+var asteroid_score = 0
 signal on_asteroid_destroyed(size: int, position: Vector2)
 
 func _ready() -> void:
+	asteroid_score = scoring_algorithm()
 	utils.bomb_exploded.connect(on_destroy)
 	utils.game_speed_changed.connect(change_speed)
 	var x = randf_range(-1,1)
@@ -33,7 +33,6 @@ func _on_body_entered(body: Node2D) -> void:
 	if (body as Player).is_invincible:
 		return
 	if (body as Player).is_boosting:
-		utils.score_changed.emit(asteroid_score)
 		on_destroy(true)
 		return
 	if body is Player:
@@ -54,6 +53,7 @@ func on_destroy(counts_for_score: bool = false):
 	on_asteroid_destroyed.emit(new_size, global_position)
 	if counts_for_score:
 		utils.score_changed.emit(asteroid_score)
+		print(asteroid_score)
 
 	queue_free()
 
@@ -64,7 +64,6 @@ func scoring_algorithm() -> float:
 func _on_area_entered(area: Area2D) -> void:
 	if area is Bullet:
 		if !(area as Bullet).IsItUFO:
-				utils.score_changed.emit(asteroid_score)
 				on_destroy(true)
 		else:
 			on_destroy()

@@ -52,8 +52,7 @@ func spawn_asteroid(asteroid_size: int, spawn_point: Vector2):
 
 func asteroid_destroyed(new_size: int, position: Vector2):
 	if new_size == 2 or new_size == 3:
-		for i in range(1):
-			spawn_asteroid(new_size, position)
+		spawn_asteroid(new_size, position)
 	else:
 		#No-Need-To-Spawn
 		return

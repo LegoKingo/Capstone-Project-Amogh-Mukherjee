@@ -4,24 +4,27 @@ extends Control
 @onready var final_payout = $PayoutLabel/FinalPayout
 @onready var score_modifiers = $ScoreModifiers
 @onready var eol_score = $EndofLevelScore
-
+var debt_check: bool
 var score_mods: Array[String] = []
 var final_payout_score
-var music_royalties = 1000
-var pause_cost = 100
-var bomb_cost = 1000
-var dodge_cost = 500
-var boost_cost = 400
-var life_value = 500
+var music_royalties = 2000
+var pause_cost = 500
+var bomb_cost = 1500
+var dodge_cost = 750
+var boost_cost = 600
+var life_value = 250
 var looped_bullet_value = 1000
 func _ready() -> void:
+	utils.levels_played += 1
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	eol_score.text = "Score: " + str(utils.endOfLevelScore)+ " points"
 	calculate_deductions()
+	unlocks_check()
 	for i in score_mods:
 		score_modifiers.text += i
 	utils.current_balance += utils.endOfLevelScore
 	final_payout.text = str(utils.endOfLevelScore) + " Credits"
+	utils.current_score = 0
 
 
 func calculate_deductions():
@@ -34,7 +37,29 @@ func calculate_deductions():
 	lives_check()
 	loan_check()
 	loop_check()
+	balance_check()
+	increase_difficulty()
 
+func increase_difficulty():
+	var prog_number = utils.levels_played % 2
+	if prog_number == 0:
+		utils.base_t_score += 1000
+		var prog_mod = "[p]Successful performance detected. Increasing target score.[/p]"
+		score_mods.append(prog_mod)
+
+func unlocks_check():
+	if utils.levels_played == 1:
+		utils.add_email.emit(2)
+	if utils.levels_played == 2:
+		utils.add_email.emit(3)
+	if utils.levels_played == 3:
+		utils.add_email.emit(5)
+	if utils.levels_played == 5:
+		utils.add_email.emit(6)
+	if utils.levels_played == 20:
+		utils.graduation_unlocked = true
+	if utils.successful_wagers == 5:
+		utils.add_email.emit(7)
 
 func music_check():
 	if utils.musicOn:
@@ -43,7 +68,7 @@ func music_check():
 		score_mods.append(music_mod)
 
 func pause_check():
-	if utils.pauseUnlock:
+	if utils.store_dictionary["Pause Button"]:
 		if utils.pauseCounter == 0:
 			return
 		var pause_penalty = utils.pauseCounter * pause_cost
@@ -114,23 +139,32 @@ func loan_check():
 	utils.endOfLevelScore += utils.current_loan_size
 	var loan_mod = "[p]WAGER COMPLETED: +" + str(utils.current_loan_size) + " points[/p]"
 	utils.successful_wagers += 1
+	if utils.successful_wagers == 5:
+		pass
 	score_mods.append(loan_mod)
 	utils.current_loan_size = 0
+	utils.target_score = utils.base_t_score
 
 func loop_check():
-	if !utils.loopingBullets:
-		return
-	if !utils.lifer_friendship:
-		return
-	if utils.looped_bullets == 0:
+	if !utils.store_dictionary["Looping Bullets"]:
 		return
 	var loop_bonus = utils.looped_bullets * looped_bullet_value
 	utils.endOfLevelScore += loop_bonus
 	if utils.looped_bullets == 1:
 		var loop_mod = "[p]" + str(utils.looped_bullets) + " bullet looped: " + str(loop_bonus)+ " points[/p]"
+		score_mods.append(loop_mod)
 	else:
 		var loop_mod = "[p]" + str(utils.looped_bullets) + " bullets looped: " + str(loop_bonus)+ " points[/p]"
-
+		score_mods.append(loop_mod)
+ 
+func balance_check():
+	if debt_check:
+		return
+	if utils.endOfLevelScore < 0:
+		utils.add_email.emit(11)
+		debt_check = true
+		var debt_mod = "[p] Losses too great... Debt Incurred. Contacting Adminstrator. [/p]"
+		score_mods.append(debt_mod)
 
 func _on_return_pressed() -> void:
 	get_tree().change_scene_to_file("res://Capstone-Project-Amogh-Mukherjee/Scenes/main_menu.tscn")

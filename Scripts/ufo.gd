@@ -72,5 +72,13 @@ func change_speed(new_speed: float):
 
 
 func _on_body_entered(body: Node2D) -> void:
+	if (body as Player).is_invincible:
+		return
+	if (body as Player).is_boosting:
+		utils.score_changed.emit(asteroid_score)
+		on_destroyed(true)
+		return
 	if body is Player:
+		(body as Player).on_player_died.emit()
+		body.queue_free()
 		on_destroyed(false)

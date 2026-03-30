@@ -50,11 +50,11 @@ func _process(_delta):
 	else:
 		rotation_direction = 0
 	
-	if Input.is_action_just_pressed("boost") && utils.boostUnlock:
+	if Input.is_action_just_pressed("boost") && utils.store_dictionary["Boost"]:
 		if can_boost:
 			boost()
 	
-	if Input.is_action_just_pressed("bomb") && utils.bombUnlock:
+	if Input.is_action_just_pressed("bomb") && utils.store_dictionary["Bomb"]:
 		if utils.bombCounter == 3:
 			return
 		utils.bombCounter += 1
@@ -62,8 +62,9 @@ func _process(_delta):
 		utils.bomb_exploded.emit(false)
 		
 	
-	if Input.is_action_just_pressed("dodge") && utils.dodgeUnlock:
+	if Input.is_action_just_pressed("dodge") && utils.store_dictionary["Dodge"]:
 		dodge()
+		utils.dodge_executed.emit()
 	
 
 
@@ -82,7 +83,7 @@ func accelerate_forward(delta: float):
 	velocity.limit_length(max_speed)
 
 func accelerate_backward(delta: float):
-	if !utils.backwardsMovement:
+	if !utils.store_dictionary["Move Backwards"]:
 		return
 	velocity += -(input_vector * linear_velocity * delta).rotated(rotation)
 	velocity.limit_length(max_speed)

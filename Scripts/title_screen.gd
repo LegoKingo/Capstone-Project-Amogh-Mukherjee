@@ -15,6 +15,8 @@ func _ready() -> void:
 		start_button.text = "Continue"
 
 func _on_start_game_pressed() -> void:
+	if utils.game_started == false:
+		utils.add_email.emit(1)
 	utils.game_started = true
 	get_tree().change_scene_to_file("res://Capstone-Project-Amogh-Mukherjee/Scenes/main_menu.tscn")
 
@@ -40,4 +42,5 @@ func _on_h_slider_drag_ended(value_changed: bool) -> void:
 
 
 func _on_quit_pressed() -> void:
-	get_tree().quit()
+	utils.quit_game = true
+	get_tree().change_scene_to_file("res://Capstone-Project-Amogh-Mukherjee/Scenes/end_of_game.tscn")

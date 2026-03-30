@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cd6hyjbpxt8l4" path="res://Capstone-Project-Amogh-Mukherjee/Assets/boost.png" id="1_yhpy2"]
 [ext_resource type="Texture2D" uid="uid://clsmfgtrq3scf" path="res://Capstone-Project-Amogh-Mukherjee/Assets/dodge.png" id="2_r2gf2"]
 [ext_resource type="Texture2D" uid="uid://d2li0h2hfp3y5" path="res://Capstone-Project-Amogh-Mukherjee/Assets/bomb.png" id="3_v7ku6"]
+[ext_resource type="Texture2D" uid="uid://b3kl3321btf3" path="res://Capstone-Project-Amogh-Mukherjee/Assets/clock.png" id="6_v7ku6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vmbom"]
 atlas = ExtResource("1_mlj61")
@@ -59,23 +60,28 @@ texture = SubResource("AtlasTexture_vmbom")
 [node name="Score" type="RichTextLabel" parent="." unique_id=365905728]
 clip_contents = false
 layout_mode = 0
-offset_left = 43.0
+offset_left = 44.0
 offset_top = 40.0
 offset_right = 1581.0
-offset_bottom = 215.0
+offset_bottom = 242.0
 theme_override_font_sizes/normal_font_size = 100
 text = "Score: 0"
 
-[node name="InvincibilityTimer" type="Timer" parent="." unique_id=14480048]
-wait_time = 3.0
+[node name="TimeLeft" type="Label" parent="." unique_id=1905852576]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 135.0
+offset_right = 219.0
+offset_bottom = 227.0
+theme_override_font_sizes/font_size = 100
+text = "60"
+
+[node name="GameTimer" type="Timer" parent="TimeLeft" unique_id=1791022483]
 one_shot = true
 
-[node name="BoostCooldown" type="Timer" parent="." unique_id=957276059]
-wait_time = 3.0
-one_shot = true
-
-[node name="DodgeTimer" type="Timer" parent="." unique_id=1335916079]
-one_shot = true
+[node name="Sprite2D" type="Sprite2D" parent="TimeLeft" unique_id=921359469]
+position = Vector2(-51, 38)
+texture = ExtResource("6_v7ku6")
 
 [connection signal="timeout" from="Boost/BoostFade" to="." method="_on_boost_fade_timeout"]
 [connection signal="timeout" from="Dodge/DodgeFade" to="." method="_on_dodge_fade_timeout"]

@@ -31,12 +31,12 @@ func _process(delta: float) -> void:
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	if utils.loopingBullets && !IsItUFO:
+	if utils.store_dictionary["Looping Bullets"] && !IsItUFO:
 		loopCounter += 1
 		position.x = wrapf(position.x, 0, rect.x)
 		position.y = wrapf(position.y, 0, rect.y)
 		if loopCounter > utils.loopMax:
-			utils.bullets_looped += 1
+			utils.looped_bullets += 1
 			queue_free()
 	else:
 		queue_free()

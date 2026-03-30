@@ -31,14 +31,5 @@ offset_bottom = 765.0
 theme_override_font_sizes/font_size = 35
 allow_search = false
 
-[node name="Button" type="Button" parent="." unique_id=1695405427]
-layout_mode = 0
-offset_left = 578.0
-offset_top = 962.0
-offset_right = 775.0
-offset_bottom = 1030.0
-text = "Email Test"
-
 [connection signal="pressed" from="Return" to="Return" method="_on_pressed"]
 [connection signal="item_clicked" from="EmailList" to="." method="_on_item_list_item_clicked"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

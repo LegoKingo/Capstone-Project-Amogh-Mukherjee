@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c1mgowm7qn5hp"]
 
 [ext_resource type="Script" uid="uid://82si56fk2tcb" path="res://Capstone-Project-Amogh-Mukherjee/Scripts/Asteroid_Movement.gd" id="1_1hjg2"]
-[ext_resource type="Texture2D" uid="uid://bbaiqe4gu7t5b" path="res://Capstone-Project-Amogh-Mukherjee/Assets/Medium Asteroid-white.png" id="2_1hjg2"]
+[ext_resource type="Texture2D" uid="uid://dugov3mqnj8ah" path="res://Capstone-Project-Amogh-Mukherjee/Assets/Medium Asteroid Transparent.png" id="2_x7t6h"]
 [ext_resource type="PackedScene" uid="uid://drt04bpgtjvth" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/screen_wrapper.tscn" id="3_klmnj"]
 [ext_resource type="PackedScene" uid="uid://ct85to3m68ptt" path="res://Capstone-Project-Amogh-Mukherjee/Scenes/player_explosion_particles.tscn" id="4_xiw7a"]
 
@@ -16,7 +16,7 @@ collision_mask = 31
 script = ExtResource("1_1hjg2")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1523088789]
-texture = ExtResource("2_1hjg2")
+texture = ExtResource("2_x7t6h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1759690337]
 position = Vector2(0.9999997, -2.9999995)

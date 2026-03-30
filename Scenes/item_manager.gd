@@ -24,9 +24,6 @@ func display_item(item_index: int):
 		purchase_button.hide()
 	current_item_index = item_index
 	item_name.text = text_data.items[item_index][1]
-	#print(utils.store_items[item_index] + "is" + str(utils.store_dictionary[utils.store_items[item_index]]))
-	#utils.store_dictionary[utils.store_items[item_index]] = true
-	#print(utils.store_items[item_index] + "is" + str(utils.store_dictionary[utils.store_items[item_index]]))
 	item_icon.texture = ResourceLoader.load(utils.icon_array[item_index])
 	item_description.text = text_data.items[item_index][2]
 	item_price.show()
@@ -37,6 +34,9 @@ func _on_purchase_button_pressed() -> void:
 	var purchase_success: bool = attempt_purchase()
 	if purchase_success:
 		utils.successful_transaction.emit(current_item_index)
+		utils.purchase_count += 1
+		if utils.purchase_count == 7:
+			utils.add_email.emit(9)
 		transaction_success.show()
 	else:
 		transaction_failure.show()
@@ -51,7 +51,7 @@ func hide_alert():
 func attempt_purchase() -> bool:
 	var purchase_successful: bool
 	var item_cost = int(item_price.text)
-	if utils.current_balance > item_cost:
+	if utils.current_balance >= item_cost:
 		purchase_successful = true
 	else: 
 		purchase_successful = false

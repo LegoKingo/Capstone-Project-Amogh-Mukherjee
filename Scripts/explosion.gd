@@ -9,4 +9,3 @@ func play_sound():
 	if !is_inside_tree():
 		return
 	explosion.play()
-	print("explosion")

@@ -16,14 +16,18 @@ func _ready() -> void:
 	
 	utils.game_over = false
 	utils.quit_early = false
+	utils.time_up = false
 	utils.bombCounter = 0
 	utils.dodgeCounter = 0
 	utils.boostCounter = 0
 	utils.pauseCounter = 0
-	utils.bullets_looped = 0
+	utils.looped_bullets = 0
+	utils.target_score = utils.base_t_score
+	utils.target_score += utils.current_loan_size
 	utils.current_score = score
 	utils.score_changed.connect(change_score)
 	player.on_player_died.connect(decrease_lives)
+
 
 func decrease_lives():
 	lives -= 1;
@@ -31,6 +35,7 @@ func decrease_lives():
 		var new_player = player_scene.instantiate() as Player
 		new_player.on_player_died.connect(decrease_lives)
 		call_deferred("respawn",new_player)
+		utils.lost_life.emit()
 	else:
 		game_over()
 
@@ -46,7 +51,7 @@ func game_over():
 
 func change_score(added_score: float):
 	score += added_score
-	utils.current_score = score
+	utils.current_score += added_score
 	if score >= utils.target_score:
 		end_game()
 

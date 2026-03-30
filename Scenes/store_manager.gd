@@ -4,6 +4,7 @@ extends Control
 @onready var text_data = get_node("/root/TextReader")
 @onready var item_array = ["Move Backwards", "Pause", "BGM", "Boost", "Dodge", "Bomb", "Looping Bullets"]
 @onready var wager_button = $VBoxContainer/Loan
+@onready var grad_button = $VBoxContainer/Graduate
 @onready var timer = $Timer
 @onready var money_changer = $CurrentBalance/MoneyChanger
 @onready var current_balance = $CurrentBalance
@@ -15,6 +16,10 @@ func _ready() -> void:
 		wager_button.show()
 	else:
 		wager_button.hide()
+	if utils.graduation_unlocked:
+		grad_button.show()
+	else:
+		grad_button.hide()
 	current_balance.text = str(utils.current_balance)
 	utils.successful_transaction.connect(change_the_money)
 	utils.item_selected.connect(price_set)

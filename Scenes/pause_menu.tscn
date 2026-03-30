@@ -81,6 +81,7 @@ tick_count = 6
 [node name="CheckButton" type="CheckButton" parent="MarginContainer/Accessibility" unique_id=1683033026]
 layout_mode = 2
 theme = ExtResource("1_5h2qh")
+button_pressed = true
 text = "Music"
 
 [node name="Return" type="Button" parent="MarginContainer/Accessibility" unique_id=710044790]

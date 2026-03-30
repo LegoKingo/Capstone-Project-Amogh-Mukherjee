@@ -11,14 +11,31 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uk8dj")
 
-[node name="Button" type="Button" parent="." unique_id=1650466308]
-layout_mode = 0
-offset_left = 850.0
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1949433389]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 0.037
+offset_left = 550.0
 offset_top = 862.0
-offset_right = 1036.0
-offset_bottom = 935.0
-theme_override_font_sizes/font_size = 35
+offset_right = 1492.0
+offset_bottom = 900.04
+
+[node name="Return" type="Button" parent="HBoxContainer" unique_id=1650466308]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
 text = "Return"
+
+[node name="EndGame" type="Button" parent="HBoxContainer" unique_id=134237082]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "End Game"
+
+[node name="BalanceReset" type="Button" parent="HBoxContainer" unique_id=1076831489]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "Reset Balance"
 
 [node name="Sender" type="RichTextLabel" parent="." unique_id=432323942]
 layout_mode = 0
@@ -68,4 +85,6 @@ text = "This is the default message from me, the developer. If you're seeing thi
 Best wishes,
 Mo"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/Return" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/EndGame" to="." method="_on_end_game_pressed"]
+[connection signal="pressed" from="HBoxContainer/BalanceReset" to="." method="_on_balance_reset_pressed"]

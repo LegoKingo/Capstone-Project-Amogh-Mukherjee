@@ -11,9 +11,11 @@ var store_page = "res://Capstone-Project-Amogh-Mukherjee/Scenes/store.tscn"
 var level_page = "res://Capstone-Project-Amogh-Mukherjee/Scenes/level.tscn"
 
 func _ready() -> void:
-	utils.unreadEmails = email_check()
-	utils.tutorial_complete = true
-	utils.store_unlock = true
+	if utils.email_count > utils.read_emails:
+		utils.unreadEmails = true
+	else:
+		utils.unreadEmails = false
+	
 	if !utils.tutorial_complete:
 		level_button.hide()
 	else:

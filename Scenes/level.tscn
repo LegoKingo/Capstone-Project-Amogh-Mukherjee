@@ -12,18 +12,19 @@
 [node name="Level" type="Node2D" unique_id=1496186178]
 script = ExtResource("1_awjfc")
 
-[node name="PlayerGUI" parent="." unique_id=1902397978 instance=ExtResource("9_bdvoi")]
-show_behind_parent = true
-
-[node name="PlayerCam" parent="." unique_id=169366405 instance=ExtResource("1_m7end")]
-
-[node name="Player" parent="." unique_id=157252003 instance=ExtResource("1_tumq0")]
-position = Vector2(641, 534)
-
 [node name="AsteroidSpawner" parent="." unique_id=2120366464 instance=ExtResource("2_k5f4k")]
 
 [node name="UFOSpawner" parent="." unique_id=1314058867 instance=ExtResource("3_riv6x")]
 
 [node name="LevelManager" parent="." unique_id=839554878 instance=ExtResource("4_7eg2i")]
+
+[node name="PlayerGUI" parent="." unique_id=1902397978 instance=ExtResource("9_bdvoi")]
+show_behind_parent = true
+clip_children = 1
+
+[node name="PlayerCam" parent="." unique_id=169366405 instance=ExtResource("1_m7end")]
+
+[node name="Player" parent="." unique_id=157252003 instance=ExtResource("1_tumq0")]
+position = Vector2(641, 534)
 
 [node name="Explosion" parent="." unique_id=1828249993 instance=ExtResource("6_t7j1n")]

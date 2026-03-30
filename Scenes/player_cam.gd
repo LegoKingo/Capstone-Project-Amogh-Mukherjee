@@ -6,11 +6,14 @@ extends Camera2D
 @onready var music = $AudioStreamPlayer2D
 
 func _ready() -> void:
+	if utils.store_dictionary["Music"]:
+		music.play()
+		utils.musicOn = true
 	utils.pauseCounter = 0
 	pause_scene.play_music.connect(music_toggle)
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("pause") && utils.pauseUnlock:
+	if Input.is_action_just_pressed("pause") && utils.store_dictionary["Pause Button"]:
 		pause()
 		utils.pauseCounter += 1
 

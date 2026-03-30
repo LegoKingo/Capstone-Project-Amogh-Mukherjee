@@ -79,8 +79,22 @@ theme_override_colors/default_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 100
 text = "Not enough credits!"
 
+[node name="SuccessMessage" type="RichTextLabel" parent="." unique_id=199880104]
+visible = false
+layout_mode = 0
+offset_left = 535.0
+offset_top = 832.0
+offset_right = 1440.0
+offset_bottom = 959.0
+theme_override_colors/default_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/normal_font_size = 100
+text = "Graduation unlocked!"
+
 [node name="Timer" type="Timer" parent="." unique_id=1342627394]
 one_shot = true
+
+[node name="SuccessTimer" type="Timer" parent="." unique_id=1891268906]
+wait_time = 3.0
 
 [connection signal="pressed" from="Apply" to="." method="_on_apply_pressed"]
 [connection signal="pressed" from="Return" to="Return" method="_on_pressed"]

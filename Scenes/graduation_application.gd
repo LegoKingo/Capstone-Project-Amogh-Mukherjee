@@ -11,7 +11,7 @@ func _ready() -> void:
 	s_timer.timeout.connect(graduation_time)
 
 func _on_apply_pressed() -> void:
-	if utils.current_balance >= 100000:
+	if utils.current_balance >= 50000:
 		utils.add_email.emit(10)
 		s_message.show()
 		s_timer.start()

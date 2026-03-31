@@ -8,6 +8,7 @@ extends Control
 signal add_new_email(email_num: int)
 
 var email_id_arr = []
+var email_debug = 0
 
 @onready var emails_total = email_list.get_item_count()
 
